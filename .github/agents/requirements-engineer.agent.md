@@ -20,7 +20,7 @@ Always apply these quality standards: [Requirements Engineer Instructions](.gith
 
 ## Mission & Scope
 
-**What you CREATE:**
+**What you create:**
 - [YES] **Epics** - Strategic initiatives with Business Outcomes
 - [YES] **Features** - Functional capabilities with Benefits Hypothesis
 - [YES] **NFRs** - Detailed Non-Functional Requirements for Architect
@@ -52,7 +52,7 @@ I have read the Business Analysis document:
 - User: [from Section 4]
 - Key Features: [from Section 9.3]
 
-**EXPLORE Board insights (from BA):**
+**Exploration Board insights (from BA):**
 - How-Might-We: [from BA Section 1.2]
 - Value Proposition: [from BA Section 1.3]
 - Needs: [from BA Section 4.2 -- functional / emotional / social]
@@ -288,10 +288,10 @@ MODERATE ASR #2: [Description]
 ## Workflow
 
 ### Phase 1: Input Analysis & Validation (15min)
-1. Read complete BA document (if available), including EXPLORE Board
+1. Read complete BA document (if available), including Exploration Board
 2. Identify Scope (Test/PoC/MVP)
 3. Extract Key Features
-4. Extract EXPLORE Board insights: HMW, Value Proposition, Needs, JTBD, Idea Potential, Critical Hypotheses
+4. Extract Exploration Board insights: HMW, Value Proposition, Needs, JTBD, Idea Potential, Critical Hypotheses
 5. Identify missing critical information
 
 ### Phase 2: Epic Creation (PoC & MVP only) (30-45min)
@@ -396,7 +396,7 @@ RIGHT:
 
 ## Keywords
 
-Requirements, Epics, Features, User Stories, NFR, ASR, Architecture Handoff, Benefits Hypothesis, Acceptance Criteria, How Might We, Jobs to be Done, Critical Hypotheses, Needs, Value Proposition, EXPLORE Board
+Requirements, Epics, Features, User Stories, NFR, ASR, Architecture Handoff, Benefits Hypothesis, Acceptance Criteria, How Might We, Jobs to be Done, Critical Hypotheses, Needs, Value Proposition, Exploration Board
 
 ---
 

@@ -20,7 +20,7 @@ The RE must be able to **directly** derive from the BA document:
 - [CHECK] What are the needs? (-> Functional Requirements)
 - [CHECK] What is the solution? (-> Features)
 - [CHECK] What is in-scope/out-of-scope? (-> Epic Boundaries)
-- [CHECK] How-Might-We question (-> Bridge EXPLORE to CREATE)
+- [CHECK] How-Might-We question (-> Bridge EXPLORATION to IDEATION)
 - [CHECK] Value Proposition (-> Solution Hypothesis)
 - [CHECK] Needs -- functional, emotional, social (-> User-Centered Design)
 - [CHECK] Insights -- functional, emotional, social, analogies (-> Innovation Basis)
@@ -82,7 +82,7 @@ MANDATORY SECTIONS (ALL):
 [CHECK] 2. Problem Statement (with quantified impact)
 [CHECK] 3. Stakeholder Analysis (complete table)
 [CHECK] 4. User & Target Group (Personas with details)
-[CHECK] 4b. EXPLORE Board complete
+[CHECK] 4b. Exploration Board complete
 [CHECK] 5. Needs + Insights (functional/emotional/social -- detailed)
 [CHECK] 5.4. Jobs to be Done (functional/emotional/social)
 [CHECK] 6. Current Process (with Pain Points)
@@ -430,7 +430,7 @@ Before handoff to RE, validate:
 - [ ] Problem Statement with quantified impact
 - [ ] Stakeholder table complete
 - [ ] User Personas with details
-- [ ] EXPLORE Board complete
+- [ ] Exploration Board complete
 - [ ] Needs (functional/emotional/social) detailed and prioritized
 - [ ] Insights (functional, emotional, social, analogies) documented
 - [ ] Jobs to be Done (all 3 types) defined

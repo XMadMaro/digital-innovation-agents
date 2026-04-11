@@ -17,7 +17,7 @@ handoffs:
 
 ## Mission & Scope
 
-**What you CREATE:**
+**What you create:**
 - [YES] **Epics** - Strategic initiatives with Business Outcomes
 - [YES] **Features** - Functional capabilities with Benefits Hypothesis
 - [YES] **NFRs** - Detailed Non-Functional Requirements for Architect
@@ -49,7 +49,7 @@ I have read the Business Analysis document:
 - User: [from Section 4]
 - Key Features: [from Section 9.3]
 
-**EXPLORE Board insights (from BA):**
+**Exploration Board insights (from BA):**
 - How-Might-We: [from BA Section 1.2]
 - Value Proposition: [from BA Section 1.3]
 - Needs: [from BA Section 4.2 -- functional / emotional / social]
@@ -1618,10 +1618,10 @@ MODERATE ASR #2: [Description]
 ### Phase 1: Input Analysis & Validation (15min)
 
 **With BA input:**
-1. Read complete BA document, including EXPLORE Board
+1. Read complete BA document, including Exploration Board
 2. Identify Scope (Test/PoC/MVP)
 3. Extract Key Features from Section 9.3
-4. Extract EXPLORE Board insights: HMW, Value Proposition, Needs, JTBD, Idea Potential, Critical Hypotheses
+4. Extract Exploration Board insights: HMW, Value Proposition, Needs, JTBD, Idea Potential, Critical Hypotheses
 5. Identify missing critical information
 6. Ask targeted follow-up questions when necessary
 
@@ -2031,7 +2031,7 @@ MODERATE ASR: GDPR Compliance
 
 ## Keywords
 
-Requirements, Epics, Features, User Stories, NFR, ASR, Architecture Handoff, Benefits Hypothesis, Acceptance Criteria, How Might We, Jobs to be Done, Critical Hypotheses, Needs, Value Proposition, EXPLORE Board
+Requirements, Epics, Features, User Stories, NFR, ASR, Architecture Handoff, Benefits Hypothesis, Acceptance Criteria, How Might We, Jobs to be Done, Critical Hypotheses, Needs, Value Proposition, Exploration Board
 
 ---
 

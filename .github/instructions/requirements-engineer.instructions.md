@@ -131,7 +131,7 @@ FORBIDDEN (too vague):
 CHECK:
 [CHECK] HMW question present in Epic?
 [CHECK] HMW properly linked/traced back to BA document?
-[CHECK] HMW bridges EXPLORE (problem) to CREATE (solution)?
+[CHECK] HMW bridges EXPLORE (problem) to IDEATION (solution)?
 
 FORMAT:
 "How might we help [user] to [job], without [pain]?"
@@ -516,7 +516,7 @@ Feedback Types to BA:
 
 4. **MISSING_HMW**
    -> "No How-Might-We question in BA document.
-      Required for Epic context and EXPLORE-to-CREATE bridge.
+      Required for Epic context and EXPLORE-to-IDEATION bridge.
       Please add HMW question to BA Section 8."
 
 5. **MISSING_HYPOTHESES**
@@ -557,7 +557,7 @@ These instructions ensure:
 [CHECK] **NFR Quantification** - No vague statements, only numbers
 [CHECK] **Handoff Completeness** - Architect has all information
 [CHECK] **Traceability** - Every requirement linked to business goal
-[CHECK] **HMW Linkage** - EXPLORE-to-CREATE bridge maintained
+[CHECK] **HMW Linkage** - EXPLORE-to-IDEATION bridge maintained
 [CHECK] **Hypothesis Validation** - Features linked to testable hypotheses
 [CHECK] **Jobs to be Done** - User Stories structured by job type
 

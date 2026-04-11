@@ -8,7 +8,7 @@ ALWAYS CHECK WHICH CHATMODE IS ACTIVE FIRST! Follow the instructions of the acti
 
 ### 1. **@business-analyst** - Innovation & Discovery
 
-Structured EXPLORE/CREATE/EVALUATE cycle from raw project idea to complete Business Analysis document.
+Structured EXPLORATION/IDEATION/VALIDATION cycle from raw project idea to complete Business Analysis document.
 
 **Input:** Raw project idea or problem description
 **Output:** `_devprocess/analysis/BA-{PROJECT}.md`, `_devprocess/analysis/EXPLORE-{PROJECT}.md`
@@ -17,7 +17,7 @@ Structured EXPLORE/CREATE/EVALUATE cycle from raw project idea to complete Busin
 **Phases:**
 - Scope Detection (Simple Test / PoC / MVP)
 - EXPLORE: User research, needs (functional/emotional/social), insights, trends, competitors, touchpoints, How-Might-We synthesis
-- CREATE: Solution idea, idea potential (3 axes), the Wow, jobs to be done, critical hypotheses, value proposition
+- IDEATION: Solution idea, idea potential (3 axes), the Wow, jobs to be done, critical hypotheses, value proposition
 - EVALUATE: VP score, assessment radar, pricing, channels, unfair advantage, revenue stream (PoC/MVP only)
 
 **Probing Techniques:** 5-Why, concretization, future projection, perspective shift, emotional probing, analogy triggers. See `innovation-methods.md` for full method reference.
@@ -135,7 +135,7 @@ Analyzes error logs, identifies root causes, implements clean fixes.
 Phase 0: Innovation & Discovery
   @business-analyst
   - EXPLORE: Users, needs, insights, trends, competitors
-  - CREATE: Solution idea, idea potential, hypotheses, value proposition
+  - IDEATION: Solution idea, idea potential, hypotheses, value proposition
   - EVALUATE: VP score, assessment radar, pricing, channels, revenue
   - Output: BA-{PROJECT}.md + EXPLORE-{PROJECT}.md
                      |
@@ -186,7 +186,7 @@ Phase 3: Implementation
 - You have a rough idea or problem to solve
 - Starting a new project from scratch
 - Need to explore and structure requirements
-- Want innovation methods (EXPLORE/CREATE/EVALUATE)
+- Want innovation methods (EXPLORATION/IDEATION/VALIDATION)
 
 **Start with @requirements-engineer when:**
 - You already have a Business Analysis document
