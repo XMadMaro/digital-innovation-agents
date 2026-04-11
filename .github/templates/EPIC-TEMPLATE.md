@@ -2,63 +2,85 @@
 
 > **ID:** EPIC-XXX  
 > **Scope:** PoC | MVP  
-> **Status:** 📋 Not Started | 🚧 In Progress | ✅ Done  
+> **Status:** Not Started | In Progress | Done  
 > **Priority:** P0-Critical | P1-High | P2-Medium  
 > **Created:** YYYY-MM-DD  
 > **BA Document:** [Link to Business Analysis Document]
 
 ---
 
-## 🎯 Epic Hypothesis Statement (SAFe Format)
+## How-Might-We (from BA)
 
-**FÜR** [Zielkunden-Segment - spezifisch, nicht "User"]  
-**DIE** [konkreten Bedarf/Problem haben]  
-**IST DAS** [Produkt/Lösung]  
-**EIN** [Produktkategorie]  
-**DAS** [Hauptnutzen bietet - quantifiziert]  
-**IM GEGENSATZ ZU** [Wettbewerbs-Alternative]  
-**UNSERE LÖSUNG** [primäre Differenzierung]
+> Carried over from the EXPLORE Board / BA Section 1.2
+
+**How might we help** {user} **achieve** {need}, **despite** {obstacle}?
 
 ---
 
-## 💰 Business Outcomes (Quantifiziert!)
+## Epic Hypothesis Statement (SAFe Format)
 
-> ⚠️ **Keine vagen Aussagen!** Jedes Outcome muss messbar sein.
+> Maps directly from BA deliverables into a testable hypothesis.
 
-### Primäre Outcomes
-
-| Outcome | Baseline (Ist) | Target (Soll) | Zeitrahmen | Messmethode |
-|---------|----------------|---------------|------------|-------------|
-| [Outcome 1] | [Aktueller Wert] | [Zielwert] | [X Monate] | [Wie gemessen] |
-| [Outcome 2] | [Aktueller Wert] | [Zielwert] | [X Monate] | [Wie gemessen] |
-| [Outcome 3] | [Aktueller Wert] | [Zielwert] | [X Monate] | [Wie gemessen] |
-
-**Beispiele für gute Outcomes:**
-- ✅ "Conversion Rate steigt von 12% auf 18% (+50%) innerhalb 6 Monate"
-- ✅ "Support-Tickets sinken um 40% (von 200/Woche auf 120/Woche)"
-- ❌ "Verbessert User Experience" (zu vage!)
-
-### Leading Indicators (Frühindikatoren)
-
-| Indikator | Beschreibung | Messzyklus | Zielwert |
-|-----------|--------------|------------|----------|
-| [Indikator 1] | [Was zeigt früh ob wir auf Kurs sind] | [Wöchentlich/Monatlich] | [Wert] |
-| [Indikator 2] | [Früher Erfolgsmesser] | [Wöchentlich/Monatlich] | [Wert] |
+**FOR** {target customer -- from HMW "user"}  
+**WHO** {have need/problem -- from HMW "need" + "obstacle"}  
+**THE** {product/solution -- from BA Value Proposition}  
+**IS A** {product category -- from BA High-Level Concept}  
+**THAT** {provides key benefit -- from BA Idea Potential "Value"}  
+**UNLIKE** {competitive alternative -- from BA Competitor Analysis}  
+**OUR SOLUTION** {primary differentiator -- from BA "The Wow" / "Unfair Advantage"}
 
 ---
 
-## 📋 MVP Features
+## Business Outcomes (Quantified!)
+
+> CRITICAL: No vague statements! Every outcome must be measurable.
+
+### Primary Outcomes
+
+| Outcome | Baseline (Current) | Target | Timeframe | Measurement Method |
+|---------|--------------------|--------|-----------|-------------------|
+| [Outcome 1] | [Current value] | [Target value] | [X months] | [How measured] |
+| [Outcome 2] | [Current value] | [Target value] | [X months] | [How measured] |
+| [Outcome 3] | [Current value] | [Target value] | [X months] | [How measured] |
+
+**Examples of good outcomes:**
+- [GOOD] "Conversion rate increases from 12% to 18% (+50%) within 6 months"
+- [GOOD] "Support tickets decrease by 40% (from 200/week to 120/week)"
+- [BAD] "Improves user experience" (too vague!)
+
+### Leading Indicators
+
+| Indicator | Description | Measurement Cycle | Target Value |
+|-----------|-------------|-------------------|-------------|
+| [Indicator 1] | [What shows early if we are on track] | [Weekly/Monthly] | [Value] |
+| [Indicator 2] | [Early success measure] | [Weekly/Monthly] | [Value] |
+
+---
+
+## Critical Hypotheses (from BA)
+
+> Hypotheses that must be validated before or during epic execution. Traced back to BA deliverables.
+
+| BA Ref | Hypothesis | Validated by Feature | Status |
+|--------|-----------|---------------------|--------|
+| BA-1.x | [Hypothesis statement] | FEATURE-XXX | Open / Validated / Disproven |
+| BA-2.x | [Hypothesis statement] | FEATURE-XXX | Open / Validated / Disproven |
+| BA-3.x | [Hypothesis statement] | FEATURE-XXX | Open / Validated / Disproven |
+
+---
+
+## MVP Features
 
 | Feature ID | Name | Priority | Effort | Status | Link |
 |------------|------|----------|--------|--------|------|
-| FEATURE-001 | [Name] | P0-Critical | M | 📋 Not Started | [Link](../features/FEATURE-001-*.md) |
-| FEATURE-002 | [Name] | P0-Critical | L | 📋 Not Started | [Link](../features/FEATURE-002-*.md) |
-| FEATURE-003 | [Name] | P1-High | S | 📋 Not Started | [Link](../features/FEATURE-003-*.md) |
+| FEATURE-001 | [Name] | P0-Critical | M | Not Started | [Link](../features/FEATURE-001-*.md) |
+| FEATURE-002 | [Name] | P0-Critical | L | Not Started | [Link](../features/FEATURE-002-*.md) |
+| FEATURE-003 | [Name] | P1-High | S | Not Started | [Link](../features/FEATURE-003-*.md) |
 
 **Priority Legend:**
-- **P0-Critical:** Ohne geht MVP nicht
-- **P1-High:** Wichtig für vollständige User Experience
-- **P2-Medium:** Wertsteigernd, aber nicht essentiell
+- **P0-Critical:** MVP does not work without this
+- **P1-High:** Important for complete user experience
+- **P2-Medium:** Adds value but not essential
 
 **Effort Legend:**
 - **S:** 1-2 Sprints
@@ -67,132 +89,134 @@
 
 ---
 
-## 🚫 Explizit Out-of-Scope
+## Explicitly Out-of-Scope
 
-> Klar definieren was NICHT Teil dieses Epics ist!
+> Clearly define what is NOT part of this epic!
 
-| Feature/Capability | Begründung | Geplant für |
-|--------------------|------------|-------------|
-| [Feature X] | [Warum out-of-scope] | Phase 2 / Never |
-| [Feature Y] | [Warum out-of-scope] | Phase 2 / Never |
-| [Feature Z] | [Warum out-of-scope] | Phase 2 / Never |
-
----
-
-## 🔗 Dependencies
-
-### Upstream (Blockiert dieses Epic)
-
-| Dependency | Typ | Owner | Status | Impact wenn verzögert |
-|------------|-----|-------|--------|----------------------|
-| [Dependency 1] | Technical/Business/External | [Team/Person] | 🟢/🟡/🔴 | [Auswirkung] |
-
-### Downstream (Wird von diesem Epic blockiert)
-
-| Abhängiges Epic/Feature | Warum blockiert |
-|-------------------------|-----------------|
-| [Epic/Feature] | [Begründung] |
+| Feature/Capability | Reasoning | Planned For |
+|--------------------|-----------|-------------|
+| [Feature X] | [Why out-of-scope] | Phase 2 / Never |
+| [Feature Y] | [Why out-of-scope] | Phase 2 / Never |
+| [Feature Z] | [Why out-of-scope] | Phase 2 / Never |
 
 ---
 
-## ⚠️ Risks
+## Dependencies
 
-| Risk | Wahrscheinlichkeit | Impact | Mitigation |
-|------|-------------------|--------|------------|
-| [Risk 1] | H/M/L | H/M/L | [Strategie] |
-| [Risk 2] | H/M/L | H/M/L | [Strategie] |
-| [Risk 3] | H/M/L | H/M/L | [Strategie] |
+### Upstream (Blocks this Epic)
 
----
+| Dependency | Type | Owner | Status | Impact if Delayed |
+|------------|------|-------|--------|-------------------|
+| [Dependency 1] | Technical/Business/External | [Team/Person] | Green/Yellow/Red | [Impact] |
 
-## 💳 Technical Debt (Nur PoC!)
+### Downstream (Blocked by this Epic)
 
-> ⚠️ **Nur für PoC relevant!** MVP sollte keine bewusste Tech Debt haben.
-
-| Shortcut | Beschreibung | Impact für MVP-Konversion | Geschätzter Cleanup-Aufwand |
-|----------|--------------|---------------------------|----------------------------|
-| [Shortcut 1] | [Was wird vereinfacht] | [Was muss für MVP geändert werden] | [X Tage] |
-| [Shortcut 2] | [Was wird vereinfacht] | [Was muss für MVP geändert werden] | [X Tage] |
-
-**MVP-Konversion Impact:**
-- [ ] Low (1-2 Wochen Cleanup)
-- [ ] Medium (1 Monat Refactor)
-- [ ] High (2-3 Monate Neu-Entwicklung)
+| Dependent Epic/Feature | Why Blocked |
+|------------------------|-------------|
+| [Epic/Feature] | [Reasoning] |
 
 ---
 
-## 📐 Assumptions
+## Risks
 
-| Annahme | Risk wenn falsch | Validierungsmethode |
-|---------|------------------|---------------------|
-| [Annahme 1] | [Impact] | [Wie validieren] |
-| [Annahme 2] | [Impact] | [Wie validieren] |
+| Risk | Probability | Impact | Mitigation |
+|------|------------|--------|------------|
+| [Risk 1] | H/M/L | H/M/L | [Strategy] |
+| [Risk 2] | H/M/L | H/M/L | [Strategy] |
+| [Risk 3] | H/M/L | H/M/L | [Strategy] |
 
 ---
 
-## 🚧 Constraints
+## Technical Debt (PoC only!)
+
+> CRITICAL: Only relevant for PoC! MVP should not have deliberate tech debt.
+
+| Shortcut | Description | Impact for MVP Conversion | Estimated Cleanup Effort |
+|----------|-------------|--------------------------|-------------------------|
+| [Shortcut 1] | [What is simplified] | [What must change for MVP] | [X days] |
+| [Shortcut 2] | [What is simplified] | [What must change for MVP] | [X days] |
+
+**MVP Conversion Impact:**
+- [ ] Low (1-2 weeks cleanup)
+- [ ] Medium (1 month refactor)
+- [ ] High (2-3 months re-development)
+
+---
+
+## Assumptions
+
+| Assumption | Risk if Wrong | Validation Method |
+|------------|---------------|-------------------|
+| [Assumption 1] | [Impact] | [How to validate] |
+| [Assumption 2] | [Impact] | [How to validate] |
+
+---
+
+## Constraints
 
 ### Technical Constraints
-- [Constraint 1]: [Beschreibung und Begründung]
+- [Constraint 1]: [Description and reasoning]
 
 ### Business Constraints
 - **Budget:** [Limit]
 - **Timeline:** [Deadline]
-- **Resources:** [Team-Verfügbarkeit]
+- **Resources:** [Team availability]
 
 ### Compliance/Regulatory
-- [Regulation]: [Anforderung]
+- [Regulation]: [Requirement]
 
 ---
 
-## 📅 Timeline & Milestones
+## Timeline & Milestones
 
-| Milestone | Zieldatum | Status | Quality Gate |
-|-----------|-----------|--------|--------------|
-| Requirements Complete | YYYY-MM-DD | 📋 | QG1 |
-| Architecture Complete | YYYY-MM-DD | 📋 | QG2 |
-| Feature 1-3 Complete | YYYY-MM-DD | 📋 | QG3 |
-| All Features Complete | YYYY-MM-DD | 📋 | QG4 |
-| Production Release | YYYY-MM-DD | 📋 | QG5 |
-
----
-
-## ✅ Quality Gate 1 (QG1) - Requirements Complete
-
-**Epic ist bereit für Architect wenn:**
-
-- [ ] Epic Hypothesis Statement vollständig (alle 7 Komponenten)
-- [ ] Business Outcomes quantifiziert (Baseline → Target → Timeframe)
-- [ ] Leading Indicators definiert
-- [ ] Min. 3 Features definiert und priorisiert (P0/P1/P2)
-- [ ] Alle Features existieren als separate Dokumente
-- [ ] Out-of-Scope explizit definiert
-- [ ] Dependencies dokumentiert
-- [ ] Risks identifiziert
-- [ ] Technical Debt dokumentiert (nur PoC)
-- [ ] Dateiname-Pattern korrekt: `EPIC-XXX-descriptive-slug.md`
-
-**Wenn alle Checks ✅:** Übergabe an Architect möglich!
+| Milestone | Target Date | Status | Quality Gate |
+|-----------|-------------|--------|--------------|
+| Requirements Complete | YYYY-MM-DD | Not Started | QG1 |
+| Architecture Complete | YYYY-MM-DD | Not Started | QG2 |
+| Feature 1-3 Complete | YYYY-MM-DD | Not Started | QG3 |
+| All Features Complete | YYYY-MM-DD | Not Started | QG4 |
+| Production Release | YYYY-MM-DD | Not Started | QG5 |
 
 ---
 
-## 📝 Change Log
+## Quality Gate 1 (QG1) - Requirements Complete
 
-| Datum | Änderung | Autor |
-|-------|----------|-------|
-| YYYY-MM-DD | Epic erstellt | [Name] |
-| YYYY-MM-DD | [Änderung] | [Name] |
+**Epic is ready for Architect when:**
+
+- [ ] HMW question present (carried over from BA)
+- [ ] Epic Hypothesis Statement complete (all 7 components with BA mapping)
+- [ ] Business Outcomes quantified (Baseline -> Target -> Timeframe)
+- [ ] Leading Indicators defined
+- [ ] Critical Hypotheses documented (with BA references)
+- [ ] Min. 3 Features defined and prioritized (P0/P1/P2)
+- [ ] All Features exist as separate documents
+- [ ] Out-of-Scope explicitly defined
+- [ ] Dependencies documented
+- [ ] Risks identified
+- [ ] Technical Debt documented (PoC only)
+- [ ] Filename pattern correct: `EPIC-XXX-descriptive-slug.md`
+
+**When all checks pass:** Handoff to Architect possible!
 
 ---
 
-## 📚 References
+## Change Log
+
+| Date | Change | Author |
+|------|--------|--------|
+| YYYY-MM-DD | Epic created | [Name] |
+| YYYY-MM-DD | [Change] | [Name] |
+
+---
+
+## References
 
 - **BA Document:** [Link]
-- **Related ADRs:** [Nach Architect-Phase hinzufügen]
-- **arc42 Documentation:** [Nach Architect-Phase hinzufügen]
+- **Related ADRs:** [Add after Architect phase]
+- **arc42 Documentation:** [Add after Architect phase]
 
 ---
 
-**Template Version:** 2.0  
-**Workflow:** BA → RE (erstellt Epic) → Architect → Developer  
-**Scope:** Nur für PoC und MVP (Simple Test hat keine Epics)
+**Template Version:** 3.0  
+**Workflow:** BA -> RE (creates Epic) -> Architect -> Developer  
+**Scope:** Only for PoC and MVP (Simple Test has no Epics)

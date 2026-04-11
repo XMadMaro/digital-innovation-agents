@@ -1,163 +1,175 @@
 # FEATURE-XXX: [Feature Title]
 
-> **Epic:** [EPIC-XXX](../epics/EPIC-XXX-*.md) - [Epic Name] *(nur PoC/MVP)*  
+> **Epic:** [EPIC-XXX](../epics/EPIC-XXX-*.md) - [Epic Name] *(PoC/MVP only)*  
 > **ID:** FEATURE-XXX  
 > **Priority:** P0-Critical | P1-High | P2-Medium  
 > **Effort:** S (1-2 Sprints) | M (3-5 Sprints) | L (6+ Sprints)  
-> **Status:** 📋 Not Started | 🚧 In Progress | ✅ Done  
+> **Status:** Not Started | In Progress | Done  
 > **Created:** YYYY-MM-DD  
 
 ---
 
-## 📝 Feature Description
+## Feature Description
 
-[1-2 Absätze: Was ist das Feature und warum wird es benötigt? Business Context klar machen.]
-
----
-
-## 🎯 Benefits Hypothesis
-
-**Wir glauben dass** [Beschreibung des Features]  
-**Folgende messbare Outcomes liefert:**
-- [Outcome 1 mit Metrik]
-- [Outcome 2 mit Metrik]
-
-**Wir wissen dass wir erfolgreich sind wenn:**
-- [Erfolgs-Metrik 1 mit konkretem Zielwert]
-- [Erfolgs-Metrik 2 mit konkretem Zielwert]
+[1-2 paragraphs: What is the feature and why is it needed? Make the business context clear.]
 
 ---
 
-## 👤 User Stories
+## Benefits Hypothesis
 
-### Story 1: [Name]
+**We believe that** [description of the feature]  
+**will deliver the following measurable outcomes:**
+- [Outcome 1 with metric]
+- [Outcome 2 with metric]
 
-**Als** [spezifische User-Rolle - nicht nur "User"]  
-**möchte ich** [konkrete Funktionalität]  
-**um** [Business-Wert] zu erreichen
-
-**Beispiel-Szenario:**
-> [Konkretes Beispiel wie der User diese Funktionalität nutzt]
-
-### Story 2: [Name]
-
-**Als** [User-Rolle]  
-**möchte ich** [Funktionalität]  
-**um** [Business-Wert] zu erreichen
-
-### Story 3: [Name]
-
-**Als** [User-Rolle]  
-**möchte ich** [Funktionalität]  
-**um** [Business-Wert] zu erreichen
+**We know we are successful when:**
+- [Success metric 1 with concrete target value]
+- [Success metric 2 with concrete target value]
 
 ---
 
-## ✅ Functional Acceptance Criteria
+## Jobs to be Done (from BA)
 
-> ⚠️ **Jedes Kriterium muss testbar sein!** Pass/Fail muss eindeutig bestimmbar sein.
+> Reference: BA Section 5.4
 
-**Dieses Feature ist funktional vollständig wenn:**
-
-- [ ] **AC1:** [Konkret und testbar]
-  - Verification: [Wie wird das getestet?]
-  
-- [ ] **AC2:** [Konkret und testbar]
-  - Verification: [Wie wird das getestet?]
-  
-- [ ] **AC3:** [Konkret und testbar]
-  - Verification: [Wie wird das getestet?]
-  
-- [ ] **AC4:** [Konkret und testbar]
-  - Verification: [Wie wird das getestet?]
-  
-- [ ] **AC5:** [Konkret und testbar]
-  - Verification: [Wie wird das getestet?]
-
-**Beispiele:**
-- ✅ "API Endpoint GET /api/users gibt HTTP 200 und JSON-Array zurück"
-- ✅ "Login mit ungültigen Credentials zeigt Fehlermeldung innerhalb 500ms"
-- ❌ "System soll schnell sein" (nicht testbar!)
-- ❌ "User-friendly Interface" (nicht testbar!)
+| Job Type | Job | Addressed in Story |
+|----------|-----|--------------------|
+| Functional | [What the user wants to accomplish] | Story 1 |
+| Emotional | [How the user wants to feel] | Story 2 |
+| Social | [How the user wants to be perceived] | Story 3 |
 
 ---
 
-## 🥒 Gherkin Scenarios
+## User Stories
+
+### Story 1: {Name} (Functional Job)
+
+**As a** [specific user role -- not just "user"]  
+**I want to** [concrete functionality]  
+**so that I can accomplish** {functional job}
+
+**Example Scenario:**
+> [Concrete example of how the user uses this functionality]
+
+### Story 2: {Name} (Emotional Job)
+
+**As a** [user role]  
+**I want to** [functionality]  
+**so that I experience** {desired feeling}
+
+### Story 3: {Name} (Social Job)
+
+**As a** [user role]  
+**I want to** [functionality]  
+**so that I am perceived as** {perception}
+
+---
+
+## Functional Acceptance Criteria
+
+> CRITICAL: Every criterion must be testable! Pass/fail must be unambiguous.
+
+**This feature is functionally complete when:**
+
+- [ ] **AC1:** [Concrete and testable]
+  - Verification: [How is this tested?]
+  
+- [ ] **AC2:** [Concrete and testable]
+  - Verification: [How is this tested?]
+  
+- [ ] **AC3:** [Concrete and testable]
+  - Verification: [How is this tested?]
+  
+- [ ] **AC4:** [Concrete and testable]
+  - Verification: [How is this tested?]
+  
+- [ ] **AC5:** [Concrete and testable]
+  - Verification: [How is this tested?]
+
+**Examples:**
+- [GOOD] "API endpoint GET /api/users returns HTTP 200 and JSON array"
+- [GOOD] "Login with invalid credentials shows error message within 500ms"
+- [BAD] "System should be fast" (not testable!)
+- [BAD] "User-friendly interface" (not testable!)
+
+---
+
+## Gherkin Scenarios
 
 ### Scenario 1: [Happy Path]
 
 ```gherkin
 Feature: [Feature Name]
 
-Scenario: [Beschreibender Name - erfolgreicher Fall]
-  Given [Vorbedingung mit konkreten Werten]
-  And [Weitere Vorbedingung]
-  When [Aktion des Users mit konkreten Werten]
-  And [Weitere Aktion falls nötig]
-  Then [Erwartetes Ergebnis mit konkreten Werten]
-  And [Weitere erwartete Ergebnisse]
-  And [Zustandsänderungen/Side Effects]
+Scenario: [Descriptive name -- successful case]
+  Given [Precondition with concrete values]
+  And [Further precondition]
+  When [User action with concrete values]
+  And [Further action if needed]
+  Then [Expected result with concrete values]
+  And [Further expected results]
+  And [State changes/side effects]
 ```
 
 ### Scenario 2: [Error Case]
 
 ```gherkin
-Scenario: [Beschreibender Name - Fehlerfall]
-  Given [Vorbedingung]
-  And [Fehlerbedingung die zum Fehler führt]
-  When [Aktion des Users]
-  Then [Erwartete Fehlerbehandlung]
-  And [Keine unerwünschten Side Effects]
+Scenario: [Descriptive name -- error case]
+  Given [Precondition]
+  And [Error condition that leads to failure]
+  When [User action]
+  Then [Expected error handling]
+  And [No unwanted side effects]
 ```
 
 ### Scenario 3: [Edge Case]
 
 ```gherkin
-Scenario: [Beschreibender Name - Grenzfall]
-  Given [Grenzwert-Bedingung]
-  When [Aktion]
-  Then [Erwartetes Verhalten am Grenzwert]
+Scenario: [Descriptive name -- edge case]
+  Given [Boundary condition]
+  When [Action]
+  Then [Expected behavior at boundary]
 ```
 
 ---
 
-## 📊 Non-Functional Requirements (NFRs)
+## Non-Functional Requirements (NFRs)
 
-> ⚠️ **KRITISCH für Architekt!** Alle NFRs müssen quantifiziert sein - keine vagen Aussagen!
+> CRITICAL for Architect! All NFRs must be quantified -- no vague statements!
 
 ### Performance
 
-| Requirement | Target | Messmethode |
-|-------------|--------|-------------|
-| Response Time | < [X] ms für [Y]% der Requests | [Tool/Methode] |
-| Throughput | [X] Requests/Second | Load Test |
-| Resource Usage | Max [X] MB RAM, [Y] CPU Cores | Monitoring |
+| Requirement | Target | Measurement Method |
+|-------------|--------|-------------------|
+| Response Time | < [X] ms for [Y]% of requests | [Tool/Method] |
+| Throughput | [X] requests/second | Load Test |
+| Resource Usage | Max [X] MB RAM, [Y] CPU cores | Monitoring |
 
 ### Security
 
-| Requirement | Spezifikation | Compliance |
+| Requirement | Specification | Compliance |
 |-------------|---------------|------------|
 | Authentication | [OAuth 2.0 / JWT / Session] | [Standard] |
-| Authorization | [RBAC / ABAC] mit Rollen: [X, Y, Z] | [Standard] |
+| Authorization | [RBAC / ABAC] with roles: [X, Y, Z] | [Standard] |
 | Encryption at Rest | [AES-256] | [GDPR Art. X] |
 | Encryption in Transit | [TLS 1.3] | [Standard] |
 | Input Validation | [XSS, SQL Injection Prevention] | OWASP |
 
 ### Scalability
 
-| Requirement | Target | Wachstum |
-|-------------|--------|----------|
-| Concurrent Users | [X] simultane User | +[Y]% pro Jahr |
-| Data Volume | [X] GB/TB | +[Y] GB/Monat |
-| Horizontal Scaling | [Ja/Nein] - [Strategie] | - |
+| Requirement | Target | Growth |
+|-------------|--------|--------|
+| Concurrent Users | [X] simultaneous users | +[Y]% per year |
+| Data Volume | [X] GB/TB | +[Y] GB/month |
+| Horizontal Scaling | [Yes/No] - [Strategy] | - |
 
 ### Availability
 
-| Requirement | Target | Bedeutung |
-|-------------|--------|-----------|
-| Uptime | [99.9]% | Max [8.7h] Downtime/Jahr |
-| RTO (Recovery Time) | [X] Minuten | Max Zeit bis Wiederherstellung |
-| RPO (Recovery Point) | [X] Minuten | Max Datenverlust |
+| Requirement | Target | Meaning |
+|-------------|--------|---------|
+| Uptime | [99.9]% | Max [8.7h] downtime/year |
+| RTO (Recovery Time) | [X] minutes | Max time to recovery |
+| RPO (Recovery Point) | [X] minutes | Max data loss |
 
 ### Maintainability
 
@@ -169,176 +181,190 @@ Scenario: [Beschreibender Name - Grenzfall]
 
 ---
 
-## 🏛️ Architecture Considerations (für Architekt)
+## Architecture Considerations (for Architect)
 
 ### Architecturally Significant Requirements (ASRs)
 
-> ASRs sind NFRs die fundamentale Architektur-Entscheidungen beeinflussen.
+> ASRs are NFRs that influence fundamental architecture decisions.
 
-#### 🔴 CRITICAL ASRs (Must address in Architecture)
+#### CRITICAL ASRs (Must address in Architecture)
 
-**ASR #1:** [Beschreibung - z.B. "Response Time < 200ms für 95% der Requests"]
-- **Warum ASR:** [Begründung warum architektur-relevant]
+**ASR #1:** [Description -- e.g. "Response Time < 200ms for 95% of requests"]
+- **Why ASR:** [Reasoning why architecture-relevant]
 - **Quality Attribute:** [Performance / Security / Scalability / Availability]
-- **Architectural Impact:** [Welche Entscheidungen werden beeinflusst?]
-  - Benötigt: [z.B. Caching-Layer, CDN, Load Balancing]
-- **Constraint:** [Technische/Business Constraints]
-- **Empfehlung:** [Falls vorhanden]
+- **Architectural Impact:** [Which decisions are influenced?]
+  - Requires: [e.g. Caching layer, CDN, Load Balancing]
+- **Constraint:** [Technical/Business constraints]
+- **Recommendation:** [If available]
 
-**ASR #2:** [Beschreibung]
-- **Warum ASR:** [Begründung]
-- **Quality Attribute:** [Attribut]
+**ASR #2:** [Description]
+- **Why ASR:** [Reasoning]
+- **Quality Attribute:** [Attribute]
 - **Architectural Impact:** [Impact]
 - **Constraint:** [Constraint]
 
-#### 🟡 MODERATE ASRs (Should address in Architecture)
+#### MODERATE ASRs (Should address in Architecture)
 
-**ASR #3:** [Beschreibung]
-- **Warum ASR:** [Begründung]
-- **Quality Attribute:** [Attribut]
+**ASR #3:** [Description]
+- **Why ASR:** [Reasoning]
+- **Quality Attribute:** [Attribute]
 - **Architectural Impact:** [Impact]
 
 ### Context & Boundaries
 
-**Interagierende Systeme:**
-- [System A]: [Art der Interaktion]
-- [System B]: [Art der Interaktion]
+**Interacting Systems:**
+- [System A]: [Type of interaction]
+- [System B]: [Type of interaction]
 
 **Integration Points:**
 - [API/Message Queue/Database]
 
 **Data Flow:**
 ```
-[User] → [Frontend] → [API Gateway] → [Service] → [Database]
-                                    ↘ [External API]
+[User] -> [Frontend] -> [API Gateway] -> [Service] -> [Database]
+                                      -> [External API]
 ```
 
-### Constraints (für Architekt)
+### Constraints (for Architect)
 
 **Technical:**
-- [Constraint 1]: [Begründung]
+- [Constraint 1]: [Reasoning]
 
 **Platform:**
-- [Cloud-Provider / On-Premise]
+- [Cloud Provider / On-Premise]
 
 **Compliance:**
 - [GDPR / HIPAA / SOC2 / PCI-DSS]
 
-### ❓ Open Questions für Architekt
+### Open Questions for Architect
 
-> Fragen die der Architekt beantworten/entscheiden muss.
+> Questions the Architect must answer/decide.
 
 **High Priority (blocking):**
-- ❓ [Technische Entscheidung die Architekt treffen muss]
-- ❓ [Architektur-Pattern-Frage]
+- [?] [Technical decision the Architect must make]
+- [?] [Architecture pattern question]
 
 **Medium Priority (non-blocking):**
-- ❓ [Integration-Strategie-Frage]
-- ❓ [Optionale Optimierung]
+- [?] [Integration strategy question]
+- [?] [Optional optimization]
 
 ---
 
-## ✅ Definition of Done
+## Definition of Done
 
 **Functional:**
-- [ ] Alle Functional Acceptance Criteria erfüllt
-- [ ] Alle Gherkin Scenarios bestehen
+- [ ] All Functional Acceptance Criteria fulfilled
+- [ ] All Gherkin Scenarios pass
 
 **Quality:**
-- [ ] Alle NFRs validiert
-- [ ] Unit Tests geschrieben (Coverage > [X]%)
-- [ ] Integration Tests bestanden
-- [ ] Performance Tests bestanden (wenn relevant)
-- [ ] Security Scan bestanden
+- [ ] All NFRs validated
+- [ ] Unit tests written (Coverage > [X]%)
+- [ ] Integration tests passed
+- [ ] Performance tests passed (if relevant)
+- [ ] Security scan passed
 
 **Process:**
-- [ ] Architecture Review abgeschlossen (QG2)
-- [ ] Code Review abgeschlossen
-- [ ] API Dokumentation aktualisiert
-- [ ] Deployed in Staging
-- [ ] UAT bestanden
+- [ ] Architecture Review completed (QG2)
+- [ ] Code Review completed
+- [ ] API documentation updated
+- [ ] Deployed to Staging
+- [ ] UAT passed
 
 ---
 
-## 🔗 Dependencies
+## Hypothesis Validation (if applicable)
 
-### Blocked By (Muss zuerst fertig sein)
+> Only fill in if this feature validates a critical hypothesis from the Epic.
 
-| Dependency | Typ | Status | Impact wenn verzögert |
-|------------|-----|--------|----------------------|
-| [FEATURE-XXX](./FEATURE-XXX-*.md) | Feature | 📋/🚧/✅ | [Auswirkung] |
-| [External System] | External | 🟢/🟡/🔴 | [Auswirkung] |
+| Hypothesis (BA Ref) | Test Method | Success Criterion | Result |
+|---------------------|-------------|-------------------|--------|
+| [BA-X.X: Hypothesis] | [How tested] | [What counts as success] | Pending / Validated / Disproven |
 
-### Blocks (Wartet auf dieses Feature)
-
-| Abhängiges Feature | Warum blockiert |
-|-------------------|-----------------|
-| [FEATURE-XXX](./FEATURE-XXX-*.md) | [Begründung] |
+**If disproven:** {pivot plan}
 
 ---
 
-## 🚫 Out of Scope
+## Dependencies
 
-> Explizit was NICHT Teil dieses Features ist (häufig verwechselt).
+### Blocked By (Must be completed first)
 
-| Feature/Capability | Begründung | Wo behandelt |
-|--------------------|------------|--------------|
-| [Capability X] | [Warum nicht hier] | [FEATURE-XXX / Phase 2 / Never] |
-| [Capability Y] | [Warum nicht hier] | [Wo stattdessen] |
+| Dependency | Type | Status | Impact if Delayed |
+|------------|------|--------|-------------------|
+| [FEATURE-XXX](./FEATURE-XXX-*.md) | Feature | Not Started / In Progress / Done | [Impact] |
+| [External System] | External | Green/Yellow/Red | [Impact] |
 
----
+### Blocks (Waiting on this Feature)
 
-## 📐 Assumptions
-
-| Annahme | Risk wenn falsch | Validierungsmethode |
-|---------|------------------|---------------------|
-| [Technische Annahme] | [Impact] | [Wie validieren] |
-| [Business Annahme] | [Impact] | [Wie validieren] |
-| [Daten Annahme] | [Impact] | [Wie validieren] |
+| Dependent Feature | Why Blocked |
+|-------------------|-------------|
+| [FEATURE-XXX](./FEATURE-XXX-*.md) | [Reasoning] |
 
 ---
 
-## ✅ Quality Gate 1 (QG1) - Feature Ready for Architect
+## Out of Scope
 
-**Feature ist bereit für Architect wenn:**
+> Explicitly what is NOT part of this feature (commonly confused).
 
-- [ ] Feature Description klar (Business Context)
-- [ ] Benefits Hypothesis mit messbaren Outcomes
-- [ ] Min. 1-3 User Stories (Als/möchte/um)
-- [ ] Min. 3-5 testbare Acceptance Criteria
+| Feature/Capability | Reasoning | Where Addressed |
+|--------------------|-----------|-----------------|
+| [Capability X] | [Why not here] | [FEATURE-XXX / Phase 2 / Never] |
+| [Capability Y] | [Why not here] | [Where instead] |
+
+---
+
+## Assumptions
+
+| Assumption | Risk if Wrong | Validation Method |
+|------------|---------------|-------------------|
+| [Technical assumption] | [Impact] | [How to validate] |
+| [Business assumption] | [Impact] | [How to validate] |
+| [Data assumption] | [Impact] | [How to validate] |
+
+---
+
+## Quality Gate 1 (QG1) - Feature Ready for Architect
+
+**Feature is ready for Architect when:**
+
+- [ ] Feature Description clear (business context)
+- [ ] Benefits Hypothesis with measurable outcomes
+- [ ] Jobs to be Done referenced (from BA Section 5.4)
+- [ ] Min. 1-3 User Stories (As a/I want to/so that) structured by job type
+- [ ] Min. 3-5 testable Acceptance Criteria
 - [ ] Min. 2-3 Gherkin Scenarios (Happy Path + Error)
-- [ ] NFRs quantifiziert (ALLE mit Zahlen!)
+- [ ] NFRs quantified (ALL with numbers!)
   - [ ] Performance (Response Time, Throughput)
-  - [ ] Security (spezifisch: OAuth, TLS, etc.)
+  - [ ] Security (specific: OAuth, TLS, etc.)
   - [ ] Scalability (Concurrent Users, Data Volume)
   - [ ] Availability (Uptime %, RTO, RPO)
-- [ ] ASRs identifiziert und markiert (🔴/🟡)
-- [ ] Architectural Impact beschrieben
-- [ ] Definition of Done vollständig
-- [ ] Dependencies dokumentiert
-- [ ] Out of Scope definiert
-- [ ] Dateiname-Pattern: `FEATURE-XXX-descriptive-slug.md`
+- [ ] ASRs identified and marked (CRITICAL/MODERATE)
+- [ ] Architectural Impact described
+- [ ] Hypothesis Validation section filled in (if this feature validates a critical hypothesis)
+- [ ] Definition of Done complete
+- [ ] Dependencies documented
+- [ ] Out of Scope defined
+- [ ] Filename pattern: `FEATURE-XXX-descriptive-slug.md`
 
-**Wenn alle Checks ✅:** Feature kann in Architect-Handoff aufgenommen werden!
-
----
-
-## 📝 Change Log
-
-| Datum | Änderung | Autor |
-|-------|----------|-------|
-| YYYY-MM-DD | Feature erstellt | [Name] |
+**When all checks pass:** Feature can be included in Architect handoff!
 
 ---
 
-## 📚 References
+## Change Log
 
-- **Epic:** [Link] *(nur PoC/MVP)*
+| Date | Change | Author |
+|------|--------|--------|
+| YYYY-MM-DD | Feature created | [Name] |
+
+---
+
+## References
+
+- **Epic:** [Link] *(PoC/MVP only)*
 - **BA Document:** [Link]
-- **Related ADRs:** [Nach Architect-Phase hinzufügen]
+- **Related ADRs:** [Add after Architect phase]
 
 ---
 
-**Template Version:** 2.0  
-**Workflow:** BA → RE (erstellt Feature) → Architect → Developer  
-**Erstellt von:** Requirements Engineer
+**Template Version:** 3.0  
+**Workflow:** BA -> RE (creates Feature) -> Architect -> Developer  
+**Created by:** Requirements Engineer

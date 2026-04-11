@@ -1,394 +1,566 @@
 ---
 name: Business Analyst Quality Standards
-description: "Qualitätsstandards für Business Analysis Dokumente - Sichert vollständige Übergabe an Requirements Engineer"
+description: "Quality standards for Business Analysis documents - Ensures complete handoff to Requirements Engineer"
 ---
 
-# Business Analyst - Quality Standards für BA-Dokumente
+# Business Analyst - Quality Standards for BA Documents
 
-Diese Instructions definieren die Qualitätsstandards für Business Analysis Dokumente und stellen sicher, dass der Requirements Engineer alle benötigten Informationen erhält.
+These instructions define the quality standards for Business Analysis documents and ensure that the Requirements Engineer receives all required information.
 
-> **Ziel:** Der Requirements Engineer kann **sofort** mit Epic/Feature-Erstellung starten, ohne Rückfragen an den BA.
-
----
-
-## 🎯 Qualitätsziele
-
-### Für den Requirements Engineer
-Der RE muss aus dem BA-Dokument **direkt** ableiten können:
-- ✅ Wer sind die User? (→ User Stories)
-- ✅ Was ist das Problem? (→ Problem Statement)
-- ✅ Was sind die Needs? (→ Functional Requirements)
-- ✅ Was ist die Lösung? (→ Features)
-- ✅ Was ist In-Scope/Out-of-Scope? (→ Epic Boundaries)
+> **Goal:** The Requirements Engineer can **immediately** start creating Epics/Features without needing to ask the BA clarifying questions.
 
 ---
 
-## 📋 Pflicht-Sections nach Scope
+## Quality Goals
+
+### For the Requirements Engineer
+The RE must be able to **directly** derive from the BA document:
+- [CHECK] Who are the users? (-> User Stories)
+- [CHECK] What is the problem? (-> Problem Statement)
+- [CHECK] What are the needs? (-> Functional Requirements)
+- [CHECK] What is the solution? (-> Features)
+- [CHECK] What is in-scope/out-of-scope? (-> Epic Boundaries)
+- [CHECK] How-Might-We question (-> Bridge EXPLORE to CREATE)
+- [CHECK] Value Proposition (-> Solution Hypothesis)
+- [CHECK] Needs -- functional, emotional, social (-> User-Centered Design)
+- [CHECK] Insights -- functional, emotional, social, analogies (-> Innovation Basis)
+- [CHECK] Jobs to be Done -- functional, emotional, social (-> Prioritization)
+- [CHECK] Idea Potential -- 3 axes with scores (-> Go/No-Go Decision)
+- [CHECK] Critical Hypotheses (-> What must be validated)
+
+---
+
+## Mandatory Sections by Scope
 
 ### Simple Test (Minimal)
 
 ```markdown
-PFLICHT-SECTIONS:
-✅ 1. Executive Summary (1 Absatz)
-✅ 2. Problem Statement (kurz)
-✅ 4. User & Zielgruppe (primäre Gruppe)
-✅ 5. Needs (Funktionale Jobs, Pains)
-✅ 9. Lösungsidee (Kernidee, Key Features)
-✅ 11. Scope (In-Scope nur)
+MANDATORY SECTIONS:
+[CHECK] 1. Executive Summary (1 paragraph)
+[CHECK] 2. Problem Statement (brief)
+[CHECK] 4. User & Target Group (primary group)
+[CHECK] 4b. User with needs (user-need mapping)
+[CHECK] 5. Needs (Functional Jobs, Pains)
+[CHECK] 9. Solution Idea (Core idea, Key Features)
+[CHECK] 11. Scope (In-Scope only)
 
 OPTIONAL:
-○ 3. Stakeholder-Analyse
-○ 6. Aktueller Prozess
-○ 7. Daten & Integration
-○ 10. Value Proposition
-○ 12. Erfolgsmetriken
+[ ] 3. Stakeholder Analysis
+[ ] 6. Current Process
+[ ] 7. Data & Integration
+[ ] 10. Value Proposition
+[ ] 12. Success Metrics
 ```
 
-### Proof of Concept (Moderat)
+### Proof of Concept (Moderate)
 
 ```markdown
-PFLICHT-SECTIONS:
-✅ 1. Executive Summary (1-2 Absätze)
-✅ 2. Problem Statement (vollständig)
-✅ 3. Stakeholder-Analyse (Tabelle)
-✅ 4. User & Zielgruppe (primär + sekundär)
-✅ 5. Needs (Jobs, Pains, Gains)
-✅ 6. Aktueller Prozess (Beschreibung)
-✅ 7. Daten & Integration (Übersicht)
-✅ 8. How Might We (mind. 1)
-✅ 9. Lösungsidee (Kernidee, Features)
-✅ 10. Value Proposition
-✅ 11. Scope (In + Out + Annahmen)
+MANDATORY SECTIONS:
+[CHECK] 1. Executive Summary (1-2 paragraphs)
+[CHECK] 2. Problem Statement (complete)
+[CHECK] 3. Stakeholder Analysis (table)
+[CHECK] 4. User & Target Group (primary + secondary)
+[CHECK] 5. Needs -- functional/emotional (typed and prioritized)
+[CHECK] 6. Current Process (description)
+[CHECK] 7. Data & Integration (overview)
+[CHECK] 7.1. Idea Potential (3 axes with scores)
+[CHECK] 7.3. Critical Hypotheses (what must be validated)
+[CHECK] 8. How Might We (at least 1)
+[CHECK] 9. Solution Idea (Core idea, Features)
+[CHECK] 10. Value Proposition
+[CHECK] 11. Scope (In + Out + Assumptions)
 
 OPTIONAL:
-○ 12. Erfolgsmetriken (empfohlen)
+[ ] 12. Success Metrics (recommended)
 ```
 
-### MVP (Vollständig)
+### MVP (Complete)
 
 ```markdown
-PFLICHT-SECTIONS (ALLE):
-✅ 1. Executive Summary (2-3 Absätze)
-✅ 2. Problem Statement (mit Auswirkungen quantifiziert)
-✅ 3. Stakeholder-Analyse (vollständige Tabelle)
-✅ 4. User & Zielgruppe (Personas mit Details)
-✅ 5. Needs (Jobs, Pains, Gains - detailliert)
-✅ 6. Aktueller Prozess (mit Pain Points)
-✅ 7. Daten & Integration (detailliert)
-✅ 8. How Might We (mind. 2)
-✅ 9. Lösungsidee (Kernidee, Features, Wow-Feature)
-✅ 10. Value Proposition (vollständig)
-✅ 11. Scope (In + Out + Annahmen + Constraints)
-✅ 12. Erfolgsmetriken (KPIs mit Zielwerten)
-✅ 13. Nächste Schritte (mit offenen Fragen)
+MANDATORY SECTIONS (ALL):
+[CHECK] 1. Executive Summary (2-3 paragraphs)
+[CHECK] 2. Problem Statement (with quantified impact)
+[CHECK] 3. Stakeholder Analysis (complete table)
+[CHECK] 4. User & Target Group (Personas with details)
+[CHECK] 4b. EXPLORE Board complete
+[CHECK] 5. Needs + Insights (functional/emotional/social -- detailed)
+[CHECK] 5.4. Jobs to be Done (functional/emotional/social)
+[CHECK] 6. Current Process (with Pain Points)
+[CHECK] 7. Data & Integration (detailed)
+[CHECK] 7.1. Idea Potential (3 axes scored 0-10 with rationale)
+[CHECK] 7.2. The Wow (differentiator)
+[CHECK] 7.3. Critical Hypotheses (at least 2 with test method)
+[CHECK] 8. How Might We (at least 2)
+[CHECK] 9. Solution Idea (Core idea, Features, Wow-Feature)
+[CHECK] 10. Value Proposition (complete)
+[CHECK] 11. Scope (In + Out + Assumptions + Constraints)
+[CHECK] 11. Evaluate section (VP Score, Assessment Radar)
+[CHECK] 12. Success Metrics (KPIs with target values)
+[CHECK] 13. Next Steps (with open questions)
 ```
 
 ---
 
-## 🔍 Section-Validierungen
+## Section Validations
 
 ### 1. Executive Summary
 
 ```markdown
 CHECK:
-✅ Problem in einem Satz beschrieben?
-✅ Lösungsidee in einem Satz beschrieben?
-✅ Erwarteter Impact/Nutzen genannt?
+[CHECK] Problem described in one sentence?
+[CHECK] Solution idea described in one sentence?
+[CHECK] Expected impact/benefit stated?
 
-BEISPIEL - GUT:
-"Das manuelle Erstellen von Berichten kostet das Team 10h/Woche. 
-Eine automatisierte Lösung soll dies auf 1h reduzieren und 
-Fehlerquote von 15% auf unter 2% senken."
+EXAMPLE - GOOD:
+"Manually creating reports costs the team 10h/week.
+An automated solution should reduce this to 1h and
+lower the error rate from 15% to under 2%."
 
-BEISPIEL - SCHLECHT:
-"Wir wollen die Berichtserstellung verbessern."
+EXAMPLE - BAD:
+"We want to improve report creation."
 ```
 
 ### 2. Problem Statement
 
 ```markdown
 CHECK:
-✅ Kontext/Hintergrund klar?
-✅ Spezifisches Problem definiert (nicht vage)?
-✅ Auswirkungen beschrieben? (PoC/MVP: quantifiziert)
+[CHECK] Context/background clear?
+[CHECK] Specific problem defined (not vague)?
+[CHECK] Impact described? (PoC/MVP: quantified)
 
-BEISPIEL - GUT:
-"Kontext: Sales-Team erstellt wöchentliche Pipeline-Reports.
-Problem: Manuelle Datenaggregation aus 3 Systemen dauert 2h pro Report.
-Auswirkung: 10h/Woche Zeitverlust, 15% Fehlerquote, verzögerte Entscheidungen."
+EXAMPLE - GOOD:
+"Context: Sales team creates weekly pipeline reports.
+Problem: Manual data aggregation from 3 systems takes 2h per report.
+Impact: 10h/week time loss, 15% error rate, delayed decisions."
 
-BEISPIEL - SCHLECHT:
-"Das Reporting ist ineffizient und muss verbessert werden."
+EXAMPLE - BAD:
+"Reporting is inefficient and needs improvement."
 ```
 
-### 4. User & Zielgruppe
+### 4. User & Target Group
 
 ```markdown
 CHECK:
-✅ Primäre Nutzergruppe identifiziert?
-✅ Charakteristika beschrieben? (Tech-Level, Kontext)
-✅ Aktuelle Situation beschrieben?
-✅ Frustrationen/Pain Points genannt?
+[CHECK] Primary user group identified?
+[CHECK] Characteristics described? (Tech level, context)
+[CHECK] Current situation described?
+[CHECK] Frustrations/Pain Points listed?
 
-BEISPIEL - GUT:
-"Primäre Nutzer: Sales Manager (5 Personen)
-Charakteristika: Business User, Excel-versiert, kein SQL
-Aktuelle Situation: Kopieren Daten manuell aus CRM, ERP, Excel
-Frustrationen: Zeitaufwand, Fehleranfälligkeit, keine Echtzeit-Daten"
+EXAMPLE - GOOD:
+"Primary users: Sales Managers (5 people)
+Characteristics: Business user, Excel-proficient, no SQL
+Current situation: Manually copy data from CRM, ERP, Excel
+Frustrations: Time effort, error-prone, no real-time data"
 
-BEISPIEL - SCHLECHT:
-"User sind Sales-Leute die Reports brauchen."
+EXAMPLE - BAD:
+"Users are sales people who need reports."
+```
+
+### 4.2 Needs
+
+```markdown
+CHECK:
+[CHECK] At least 3 needs identified?
+[CHECK] Typed as functional/emotional/social?
+[CHECK] Prioritized?
+
+FORMAT:
+Functional: "I need to [capability] so that [outcome]"
+Emotional: "I want to feel [emotion] when [situation]"
+Social: "I want to be seen as [perception] by [audience]"
+
+EXAMPLE - GOOD:
+"Functional: I need to generate reports in under 5 minutes
+ so that I can respond to management requests same-day.
+ Emotional: I want to feel confident that my numbers are correct.
+ Social: I want to be seen as data-driven by my leadership team."
+
+EXAMPLE - BAD:
+"User needs better reports."
+```
+
+### 4.3 Insights
+
+```markdown
+CHECK:
+[CHECK] At least 2 per category (functional, emotional)?
+[CHECK] Insights derived from observations or research?
+[CHECK] Analogies included where applicable?
+
+FORMAT:
+Functional Insight: "[Observation] because [root cause]"
+Emotional Insight: "[Behavior] driven by [underlying emotion]"
+Social Insight: "[Pattern] because [social dynamic]"
+Analogy: "[Similar domain] solved this by [approach]"
 ```
 
 ### 5. Needs & Jobs to be Done
 
 ```markdown
 CHECK:
-✅ Mindestens 2-3 funktionale Jobs genannt?
-✅ Mindestens 2-3 Pains identifiziert?
-✅ Mindestens 2-3 Gains beschrieben?
+[CHECK] At least 2-3 functional jobs listed?
+[CHECK] At least 2-3 pains identified?
+[CHECK] At least 2-3 gains described?
 
 FORMAT:
-Jobs: "Als [Rolle] muss ich [Tätigkeit] um [Ziel] zu erreichen"
-Pains: Konkrete Hindernisse, Frustrationen, Risiken
-Gains: Gewünschte Outcomes, Verbesserungen
+Jobs: "As [role] I need to [activity] in order to [goal]"
+Pains: Concrete obstacles, frustrations, risks
+Gains: Desired outcomes, improvements
+```
+
+### 5.4 Jobs to be Done
+
+```markdown
+CHECK:
+[CHECK] All 3 job types covered (functional/emotional/social)?
+[CHECK] Current solution identified?
+[CHECK] Desired outcome per job type defined?
+
+FORMAT:
+Functional Job: "When [situation], I want to [action], so I can [outcome]"
+Emotional Job: "When [situation], I want to feel [emotion]"
+Social Job: "When [situation], I want to be perceived as [perception]"
+
+EXAMPLE - GOOD:
+"Functional: When preparing the weekly review, I want to pull all
+ pipeline data into one view, so I can present a complete picture.
+ Current solution: Manual Excel consolidation from 3 sources.
+ Emotional: I want to feel confident that my data is accurate.
+ Social: I want to be perceived as well-prepared by the C-suite."
+
+EXAMPLE - BAD:
+"User wants faster reports."
+```
+
+### 7.1 Idea Potential
+
+```markdown
+CHECK:
+[CHECK] All 3 axes scored 0-10 with rationale?
+[CHECK] Scores reflect evidence, not wishful thinking?
+
+FORMAT:
+Axis 1 - Desirability: [0-10] -- [Rationale]
+Axis 2 - Feasibility: [0-10] -- [Rationale]
+Axis 3 - Viability: [0-10] -- [Rationale]
+
+EXAMPLE - GOOD:
+"Desirability: 8/10 -- 5 out of 5 interviewed sales managers
+ confirmed this as their top pain point.
+ Feasibility: 6/10 -- API integrations exist for 2 of 3 systems;
+ third requires custom connector.
+ Viability: 7/10 -- Estimated 10h/week savings justifies
+ development cost within 3 months."
+```
+
+### 7.2 The Wow
+
+```markdown
+CHECK:
+[CHECK] Differentiator clearly described?
+[CHECK] Explains why this is better than alternatives?
+
+EXAMPLE - GOOD:
+"The Wow: One-click report generation that auto-detects anomalies
+ and highlights them with plain-language explanations -- something
+ no existing BI tool does without manual configuration."
+
+EXAMPLE - BAD:
+"It will be really fast."
+```
+
+### 7.3 Critical Hypotheses
+
+```markdown
+CHECK:
+[CHECK] At least 2 hypotheses defined?
+[CHECK] Test method defined for each?
+[CHECK] Success criteria stated?
+
+FORMAT:
+Hypothesis: "We believe that [assumption]"
+Test: "We will validate this by [method]"
+Success Criterion: "We know we are right when [measurable outcome]"
+
+EXAMPLE - GOOD:
+"H1: We believe that sales managers will adopt automated reports
+ if generation takes under 1 minute.
+ Test: Prototype test with 3 sales managers, measure adoption.
+ Success: 80% prefer automated over manual within 2 weeks.
+
+ H2: We believe that API data from all 3 systems can be
+ consolidated with <5% data discrepancy.
+ Test: Integration spike with sample data.
+ Success: Reconciliation delta <5% across 100 records."
+
+EXAMPLE - BAD:
+"Users will like it."
 ```
 
 ### 8. How Might We
 
 ```markdown
 CHECK:
-✅ Mindestens 1 HMW-Frage formuliert? (PoC/MVP: mind. 2)
-✅ Format: "Wie könnten wir [User] helfen, [Job] zu erledigen, ohne [Pain]?"
-✅ Primäre HMW-Frage markiert?
+[CHECK] At least 1 HMW question formulated? (PoC/MVP: at least 2)
+[CHECK] Format: "How might we help [user] to [job], without [pain]?"
+[CHECK] Primary HMW question marked?
 
-BEISPIEL - GUT:
-"Wie könnten wir Sales Managern helfen, Pipeline-Reports zu erstellen, 
-ohne manuell Daten aus 3 Systemen zusammenzuführen?"
+EXAMPLE - GOOD:
+"How might we help Sales Managers create pipeline reports
+without manually aggregating data from 3 systems?"
 
-BEISPIEL - SCHLECHT:
-"Wie können wir Reporting verbessern?"
+EXAMPLE - BAD:
+"How can we improve reporting?"
 ```
 
-### 9. Lösungsidee
+### 9. Solution Idea
 
 ```markdown
 CHECK:
-✅ Kernidee in 2-3 Sätzen beschrieben?
-✅ High-Level Concept/Analogie vorhanden? (MVP)
-✅ Key Features gelistet? (mind. 3)
-✅ Wow-Feature identifiziert? (MVP)
+[CHECK] Core idea described in 2-3 sentences?
+[CHECK] High-Level Concept/Analogy present? (MVP)
+[CHECK] Key Features listed? (at least 3)
+[CHECK] Wow-Feature identified? (MVP)
 
 KEY FEATURES FORMAT:
-1. **[Feature Name]**: [1-Satz Beschreibung]
-   - Löst: [Welchen Pain/Job]
+1. **[Feature Name]**: [1-sentence description]
+   - Solves: [Which Pain/Job]
 
-BEISPIEL:
-1. **Automatische Datenaggregation**: Zieht Daten aus CRM, ERP, Excel zusammen
-   - Löst: Manuelles Kopieren (2h → 5min)
+EXAMPLE:
+1. **Automatic Data Aggregation**: Pulls data from CRM, ERP, Excel together
+   - Solves: Manual copying (2h -> 5min)
 ```
 
 ### 10. Value Proposition
 
 ```markdown
 CHECK:
-✅ Alle Platzhalter ausgefüllt?
-✅ Differentiator klar?
+[CHECK] All placeholders filled in?
+[CHECK] Differentiator clear?
 
 FORMAT:
-"Für [User], die [Problem] haben, 
-ist unsere Lösung ein [Produkt-Kategorie], 
-das [Key Benefit] bietet. 
-Anders als [Alternative] ermöglicht unsere Lösung [Differentiator]."
+"For [user], who [problem],
+our solution is a [product category],
+that provides [key benefit].
+Unlike [alternative], our solution enables [differentiator]."
 
-BEISPIEL - GUT:
-"Für Sales Manager, die wöchentlich Pipeline-Reports erstellen müssen,
-ist unsere Lösung ein automatisiertes Reporting-Dashboard,
-das Echtzeit-Daten aus allen Systemen aggregiert.
-Anders als manuelle Excel-Reports ermöglicht unsere Lösung 
-sofortige Aktualisierung und eliminiert Übertragungsfehler."
+EXAMPLE - GOOD:
+"For Sales Managers who must create weekly pipeline reports,
+our solution is an automated reporting dashboard
+that aggregates real-time data from all systems.
+Unlike manual Excel reports, our solution enables
+instant updates and eliminates transcription errors."
 ```
 
-### 11. Scope & Priorisierung
+### 11. Scope & Prioritization
 
 ```markdown
 CHECK:
-✅ In-Scope klar definiert? (mind. 3 Items)
-✅ Out-of-Scope explizit genannt? (mind. 2 Items)
-✅ Annahmen dokumentiert?
-✅ Constraints genannt? (PoC/MVP)
+[CHECK] In-Scope clearly defined? (at least 3 items)
+[CHECK] Out-of-Scope explicitly listed? (at least 2 items)
+[CHECK] Assumptions documented?
+[CHECK] Constraints listed? (PoC/MVP)
 
-WICHTIG FÜR RE:
-- In-Scope → wird zu Epics/Features
-- Out-of-Scope → explizit NICHT Teil des Projekts
-- Annahmen → müssen validiert werden
-- Constraints → beeinflussen Architektur-Entscheidungen
+IMPORTANT FOR RE:
+- In-Scope -> becomes Epics/Features
+- Out-of-Scope -> explicitly NOT part of the project
+- Assumptions -> must be validated
+- Constraints -> influence architecture decisions
 ```
 
-### 12. Erfolgsmetriken (PoC/MVP)
+### 11. Evaluate (MVP only)
 
 ```markdown
 CHECK:
-✅ Mindestens 2-3 KPIs definiert?
-✅ Baseline-Wert genannt? (aktueller Zustand)
-✅ Zielwert definiert?
+[CHECK] VP Score complete?
+[CHECK] Assessment Radar scored?
+[CHECK] All dimensions rated with justification?
+```
 
-BEISPIEL - GUT:
-- **Report-Erstellungszeit**: 2h → 5min (-96%)
-- **Fehlerquote**: 15% → <2%
-- **Aktualität**: Wöchentlich → Echtzeit
+### 12. Success Metrics (PoC/MVP)
 
-BEISPIEL - SCHLECHT:
-- "Schnellere Reports"
-- "Weniger Fehler"
+```markdown
+CHECK:
+[CHECK] At least 2-3 KPIs defined?
+[CHECK] Baseline value stated? (current state)
+[CHECK] Target value defined?
+
+EXAMPLE - GOOD:
+- **Report creation time**: 2h -> 5min (-96%)
+- **Error rate**: 15% -> <2%
+- **Timeliness**: Weekly -> Real-time
+
+EXAMPLE - BAD:
+- "Faster reports"
+- "Fewer errors"
 ```
 
 ---
 
-## ✅ Übergabe-Checkliste an Requirements Engineer
+## Handoff Checklist for Requirements Engineer
 
-Vor Übergabe an RE, validiere:
+Before handoff to RE, validate:
 
 ### Minimal (Simple Test)
 ```
-- [ ] Problem ist klar und spezifisch
-- [ ] Mindestens eine User-Gruppe definiert
-- [ ] Key Features (High-Level) gelistet
-- [ ] In-Scope definiert
+- [ ] Problem is clear and specific
+- [ ] At least one user group defined
+- [ ] User with needs mapped
+- [ ] Key Features (high-level) listed
+- [ ] In-Scope defined
 ```
 
 ### Standard (PoC)
 ```
-- [ ] Problem ist klar und spezifisch
-- [ ] User-Gruppe(n) mit Charakteristika definiert
-- [ ] Needs/Pains/Gains erfasst
-- [ ] How Might We-Frage formuliert
-- [ ] Lösungsidee mit Key Features beschrieben
-- [ ] Value Proposition formuliert
-- [ ] In-Scope und Out-of-Scope definiert
-- [ ] Annahmen dokumentiert
+- [ ] Problem is clear and specific
+- [ ] User group(s) with characteristics defined
+- [ ] Needs (functional/emotional) captured and typed
+- [ ] How Might We question formulated
+- [ ] Solution idea with Key Features described
+- [ ] Value Proposition formulated
+- [ ] In-Scope and Out-of-Scope defined
+- [ ] Assumptions documented
+- [ ] Idea Potential scored (3 axes)
+- [ ] Critical Hypotheses defined with test methods
 ```
 
-### Vollständig (MVP)
+### Complete (MVP)
 ```
-- [ ] Executive Summary enthält Problem, Lösung, Impact
-- [ ] Problem Statement mit quantifizierten Auswirkungen
-- [ ] Stakeholder-Tabelle vollständig
-- [ ] User Personas mit Details
-- [ ] Jobs/Pains/Gains detailliert
-- [ ] Aktueller Prozess mit Pain Points
-- [ ] Daten & Integrationen identifiziert
-- [ ] How Might We-Fragen (mind. 2)
-- [ ] Lösungsidee mit Wow-Feature
-- [ ] Value Proposition vollständig
-- [ ] Scope klar (In/Out/Annahmen/Constraints)
-- [ ] KPIs mit Baseline und Zielwerten
-- [ ] Offene Fragen für RE gelistet
-```
-
----
-
-## 🚫 Anti-Patterns im BA-Dokument
-
-### ❌ Vage Problembeschreibung
-```
-FALSCH: "Das System ist langsam und unzuverlässig"
-RICHTIG: "Die Ladezeit beträgt durchschnittlich 8 Sekunden, 
-         Ziel sind <2 Sekunden. System ist 2x/Woche nicht erreichbar."
-```
-
-### ❌ Unspezifische User
-```
-FALSCH: "User sind Mitarbeiter"
-RICHTIG: "Primäre User: Sales Manager (5), sekundär: CFO für Reports"
-```
-
-### ❌ Fehlende Priorisierung
-```
-FALSCH: Lange Feature-Liste ohne Priorisierung
-RICHTIG: Must-Have (In-Scope) vs Nice-to-Have (Out-of-Scope) getrennt
-```
-
-### ❌ Technische Lösungen vorwegnehmen
-```
-FALSCH: "Wir brauchen eine React-App mit PostgreSQL-Backend"
-RICHTIG: "Wir brauchen eine Web-Anwendung mit Datenpersistenz"
-(Technologie-Entscheidungen sind Architekt-Domäne!)
-```
-
-### ❌ Keine messbaren Erfolgsmetriken
-```
-FALSCH: "Nutzer sollen zufriedener sein"
-RICHTIG: "NPS soll von 30 auf 50 steigen"
+- [ ] Executive Summary contains Problem, Solution, Impact
+- [ ] Problem Statement with quantified impact
+- [ ] Stakeholder table complete
+- [ ] User Personas with details
+- [ ] EXPLORE Board complete
+- [ ] Needs (functional/emotional/social) detailed and prioritized
+- [ ] Insights (functional, emotional, social, analogies) documented
+- [ ] Jobs to be Done (all 3 types) defined
+- [ ] Current process with Pain Points
+- [ ] Data & Integrations identified
+- [ ] How Might We questions (at least 2)
+- [ ] Solution idea with Wow-Feature
+- [ ] Value Proposition complete
+- [ ] Idea Potential (3 axes scored 0-10 with rationale)
+- [ ] Critical Hypotheses (at least 2 with test method)
+- [ ] Scope clear (In/Out/Assumptions/Constraints)
+- [ ] Evaluate section (VP Score, Assessment Radar)
+- [ ] KPIs with baseline and target values
+- [ ] Open questions for RE listed
 ```
 
 ---
 
-## 📤 Handoff-Format an Requirements Engineer
+## Anti-Patterns in BA Documents
+
+### BAD: Vague Problem Description
+```
+WRONG: "The system is slow and unreliable"
+RIGHT: "Average load time is 8 seconds,
+        target is <2 seconds. System is unreachable 2x/week."
+```
+
+### BAD: Unspecific Users
+```
+WRONG: "Users are employees"
+RIGHT: "Primary users: Sales Managers (5), secondary: CFO for reports"
+```
+
+### BAD: Missing Prioritization
+```
+WRONG: Long feature list without prioritization
+RIGHT: Must-Have (In-Scope) vs Nice-to-Have (Out-of-Scope) separated
+```
+
+### BAD: Prescribing Technical Solutions
+```
+WRONG: "We need a React app with PostgreSQL backend"
+RIGHT: "We need a web application with data persistence"
+(Technology decisions belong to the Architect!)
+```
+
+### BAD: No Measurable Success Metrics
+```
+WRONG: "Users should be more satisfied"
+RIGHT: "NPS should increase from 30 to 50"
+```
+
+---
+
+## Handoff Format for Requirements Engineer
 
 ```markdown
-## 13. Nächste Schritte
+## 13. Next Steps
 
-✅ **Abgeschlossen**: Exploration & Ideation
+COMPLETED: Exploration & Ideation
 
-⏭️ **Nächster Schritt**: Übergabe an Requirements Engineer
+NEXT STEP: Handoff to Requirements Engineer
 
-**Für Requirements Engineer**:
-- Erstelle Epics basierend auf Section 9.3 (Key Features)
-- Leite User Stories aus Section 4 (User) + Section 5 (Needs) ab
-- Definiere NFRs basierend auf Section 11.4 (Constraints)
-- Nutze Section 12 (KPIs) für Acceptance Criteria
+**For Requirements Engineer**:
+- Create Epics based on Section 9.3 (Key Features)
+- Derive User Stories from Section 4 (User) + Section 5 (Needs) + Section 5.4 (Jobs to be Done)
+- Structure User Stories by job type (functional/emotional/social)
+- Define NFRs based on Section 11.4 (Constraints)
+- Use Section 12 (KPIs) for Acceptance Criteria
+- Link Critical Hypotheses (Section 7.3) to Features that validate them
+- Derive Leading Indicators from Critical Hypotheses
+- Include HMW question (Section 8) in Epic context
 
-**Offene Fragen für RE**:
-- [Konkrete Frage 1 die RE klären sollte]
-- [Konkrete Frage 2]
+**Open Questions for RE**:
+- [Specific question 1 that RE should clarify]
+- [Specific question 2]
 
-**Dokument-Referenz**:
+**Document Reference**:
 - Problem Statement: Section 2
 - User Context: Section 4
-- Needs/Jobs: Section 5
+- Needs/Jobs: Section 5 + 5.4
+- Insights: Section 4.3
+- Idea Potential: Section 7.1
+- Critical Hypotheses: Section 7.3
 - Key Features: Section 9.3
 - Scope Boundaries: Section 11
+- Evaluate: Section 11 (MVP)
 ```
 
 ---
 
-## 📊 Qualitäts-Score
+## Quality Score
 
-Bewerte das BA-Dokument vor Übergabe:
+Rate the BA document before handoff:
 
-| Kriterium | Gewichtung | Score |
-|-----------|------------|-------|
-| Problem klar definiert | 20% | ⬜ |
-| User identifiziert | 15% | ⬜ |
-| Needs/Pains/Gains | 15% | ⬜ |
-| Lösungsidee konkret | 20% | ⬜ |
-| Scope definiert | 15% | ⬜ |
-| Metriken vorhanden | 15% | ⬜ |
+| Criterion | Weight | Score |
+|-----------|--------|-------|
+| Problem clearly defined | 15% | [ ] |
+| User identified | 10% | [ ] |
+| Needs/Insights (typed, prioritized) | 15% | [ ] |
+| Solution idea concrete | 15% | [ ] |
+| Scope defined | 10% | [ ] |
+| Metrics present | 10% | [ ] |
+| Idea Potential (3 axes scored) | 10% | [ ] |
+| Critical Hypotheses (with tests) | 10% | [ ] |
+| HMW + Value Proposition | 5% | [ ] |
 
-**Mindest-Score für Übergabe:**
+**Minimum score for handoff:**
 - Simple Test: 60%
 - PoC: 75%
 - MVP: 90%
 
 ---
 
-## 🔄 Feedback-Loop mit User
+## Feedback Loop with User
 
-Wenn kritische Informationen fehlen:
+When critical information is missing:
 
 ```markdown
-⚠️ Für ein vollständiges BA-Dokument fehlen noch:
+WARNING: The following items are still needed for a complete BA document:
 
-- [ ] [Fehlende Information 1]
-- [ ] [Fehlende Information 2]
+- [ ] [Missing information 1]
+- [ ] [Missing information 2]
 
-Können wir diese Punkte noch klären, bevor ich an den 
-Requirements Engineer übergebe?
+Can we clarify these points before I hand off to the
+Requirements Engineer?
 ```
 
 ---
 
-**Version:** 1.0
-**Focus:** Output-Qualität und RE-Handoff
-**Quality Gate:** BA-Dokument Vollständigkeit
+**Version:** 2.0
+**Focus:** Output quality and RE handoff
+**Quality Gate:** BA document completeness

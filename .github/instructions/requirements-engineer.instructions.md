@@ -1,59 +1,59 @@
 ---
 name: Requirements Engineer Quality Standards
 applyTo: "requirements/epics/**/*.md, requirements/features/**/*.md, requirements/handoff/**/*.md"
-description: "Qualitätsregeln für Requirements Engineering - Epics und Features"
+description: "Quality rules for Requirements Engineering - Epics and Features"
 ---
 
-# Requirements Engineer - Quality Standards für Epics & Features
+# Requirements Engineer - Quality Standards for Epics & Features
 
-Diese Instructions werden **automatisch** angewendet beim Arbeiten mit Epic- und Feature-Dateien. Sie definieren die Qualitätsstandards für die Übergabe an den Architekten.
+These instructions are **automatically** applied when working with Epic and Feature files. They define the quality standards for the handoff to the Architect.
 
-> **Wichtig:** Diese Regeln ergänzen den Requirements Engineer Agent und stellen sicher, dass alle Requirements architect-ready sind.
-
----
-
-## 📁 Unterstützte Dateitypen
-
-Diese Validierungsregeln greifen bei:
-
-```
-✅ requirements/epics/EPIC-*.md
-✅ requirements/features/FEATURE-*.md
-✅ requirements/handoff/*.md
-```
-
-**NICHT unterstützt** (werden vom Developer Agent erstellt):
-```
-❌ requirements/issues/ISSUE-*.md       → Developer Agent
-❌ requirements/tasks/TASK-*.md         → Developer Agent
-❌ architecture/adr/ADR-*.md            → Architect Agent
-❌ architecture/arc42/**                → Architect Agent
-```
+> **Important:** These rules complement the Requirements Engineer Agent and ensure that all requirements are architect-ready.
 
 ---
 
-## 🎯 Qualitätsziele
+## Supported File Types
 
-### Für den Architekten
-Der Architekt muss **sofort starten** können mit:
-- ✅ Klar identifizierten Architecturally Significant Requirements (ASRs)
-- ✅ Quantifizierten Non-Functional Requirements (NFRs)
-- ✅ Dokumentierten Constraints
-- ✅ Priorisierten Open Questions
+These validation rules apply to:
 
-### Für den Developer Agent
-Nach Architektur-Phase muss der Developer Agent:
-- ✅ Klare Acceptance Criteria haben
-- ✅ Testbare Definition of Done haben
-- ✅ Verstehen was zu bauen ist (nicht wie)
+```
+[CHECK] requirements/epics/EPIC-*.md
+[CHECK] requirements/features/FEATURE-*.md
+[CHECK] requirements/handoff/*.md
+```
+
+**NOT supported** (created by the Developer Agent):
+```
+[X] requirements/issues/ISSUE-*.md       -> Developer Agent
+[X] requirements/tasks/TASK-*.md         -> Developer Agent
+[X] architecture/adr/ADR-*.md            -> Architect Agent
+[X] architecture/arc42/**                -> Architect Agent
+```
 
 ---
 
-## 🔍 Automatische Validierungen
+## Quality Goals
 
-### 1. Dateinamen-Konventionen
+### For the Architect
+The Architect must be able to **start immediately** with:
+- [CHECK] Clearly identified Architecturally Significant Requirements (ASRs)
+- [CHECK] Quantified Non-Functional Requirements (NFRs)
+- [CHECK] Documented Constraints
+- [CHECK] Prioritized Open Questions
 
-**Pattern-Validierung beim Erstellen/Speichern:**
+### For the Developer Agent
+After the Architecture phase, the Developer Agent must have:
+- [CHECK] Clear Acceptance Criteria
+- [CHECK] Testable Definition of Done
+- [CHECK] Understanding of what to build (not how)
+
+---
+
+## Automatic Validations
+
+### 1. File Naming Conventions
+
+**Pattern validation on create/save:**
 
 ```javascript
 const patterns = {
@@ -62,388 +62,509 @@ const patterns = {
 };
 ```
 
-**Beispiele:**
+**Examples:**
 
 ```markdown
-✅ EPIC-001-customer-portal.md
-✅ FEATURE-042-user-authentication.md
+[CHECK] EPIC-001-customer-portal.md
+[CHECK] FEATURE-042-user-authentication.md
 
-❌ epic-001.md                       (missing prefix)
-❌ EPIC-1-portal.md                  (number not 3-digit)
-❌ EPIC-001-Customer Portal.md       (spaces not allowed)
-❌ FEATURE-001-userAuth.md           (camelCase not allowed)
+[X] epic-001.md                       (missing prefix)
+[X] EPIC-1-portal.md                  (number not 3-digit)
+[X] EPIC-001-Customer Portal.md       (spaces not allowed)
+[X] FEATURE-001-userAuth.md           (camelCase not allowed)
 ```
 
 ---
 
-### 2. Epic-Level Validierung (nur PoC & MVP)
+### 2. Epic-Level Validation (PoC & MVP only)
 
-#### Pflicht-Sections für Epics:
+#### Mandatory Sections for Epics:
 
 ```markdown
-CHECK beim Speichern:
+CHECK on save:
 
-1. ✅ Epic Hypothesis Statement vorhanden und vollständig?
-2. ✅ Business Outcomes quantifiziert? (Zahlen, Metriken)
-3. ✅ Leading Indicators definiert?
-4. ✅ MVP Features Liste vorhanden? (min. 3 Features)
-5. ✅ Features priorisiert? (P0/P1/P2)
-6. ✅ Out-of-Scope explizit definiert?
-7. ✅ Dependencies dokumentiert?
-8. ✅ Risks identifiziert?
-9. ✅ Technical Debt dokumentiert? (nur PoC)
+1. [CHECK] Epic Hypothesis Statement present and complete?
+2. [CHECK] Business Outcomes quantified? (numbers, metrics)
+3. [CHECK] Leading Indicators defined?
+4. [CHECK] MVP Features List present? (min. 3 Features)
+5. [CHECK] Features prioritized? (P0/P1/P2)
+6. [CHECK] Out-of-Scope explicitly defined?
+7. [CHECK] Dependencies documented?
+8. [CHECK] Risks identified?
+9. [CHECK] Technical Debt documented? (PoC only)
+10. [CHECK] HMW question present and properly linked to BA?
+11. [CHECK] Critical Hypotheses table present with Feature links?
+12. [CHECK] Leading Indicators derived from hypotheses?
 ```
 
-#### Epic Hypothesis Statement - Vollständigkeits-Check:
+#### Epic Hypothesis Statement - Completeness Check:
 
 ```markdown
-Pflicht-Komponenten:
+Mandatory components:
 
-✅ FÜR [Zielkunden-Segment] - spezifisch, nicht "User"
-✅ DIE [Bedarf/Problem haben] - klar beschrieben
-✅ IST DAS [Produkt/Lösung] - Lösung benannt
-✅ EIN [Produktkategorie] - kategorisiert
-✅ DAS [Hauptnutzen bietet] - quantifiziert
-✅ IM GEGENSATZ ZU [Alternative] - Wettbewerb genannt
-✅ UNSERE LÖSUNG [Differenzierung] - USP klar
+[CHECK] FOR [target customer segment] - specific, not "users"
+[CHECK] WHO [have need/problem] - clearly described
+[CHECK] THE [product/solution] IS - solution named
+[CHECK] A [product category] - categorized
+[CHECK] THAT [provides key benefit] - quantified
+[CHECK] UNLIKE [alternative] - competition named
+[CHECK] OUR SOLUTION [differentiation] - USP clear
 ```
 
-#### Business Outcomes - Quantifizierungs-Check:
+#### Business Outcomes - Quantification Check:
 
 ```markdown
-ERLAUBT (konkret):
-✅ "Conversion Rate steigt von 12% auf 18% (+50%) innerhalb 6 Monate"
-✅ "Support-Tickets sinken um 40% (von 200/Woche auf 120/Woche)"
-✅ "Time-to-Market reduziert von 8 Wochen auf 4 Wochen (-50%)"
+ALLOWED (concrete):
+[CHECK] "Conversion rate increases from 12% to 18% (+50%) within 6 months"
+[CHECK] "Support tickets decrease by 40% (from 200/week to 120/week)"
+[CHECK] "Time-to-market reduced from 8 weeks to 4 weeks (-50%)"
 
-VERBOTEN (zu vage):
-❌ "Verbessert User Experience"
-❌ "Macht den Prozess schneller"
-❌ "Erhöht die Zufriedenheit"
+FORBIDDEN (too vague):
+[X] "Improves user experience"
+[X] "Makes the process faster"
+[X] "Increases satisfaction"
 ```
 
----
-
-### 3. Feature-Level Validierung
-
-#### Pflicht-Sections für Features:
+#### HMW Question Validation:
 
 ```markdown
-CHECK beim Speichern:
+CHECK:
+[CHECK] HMW question present in Epic?
+[CHECK] HMW properly linked/traced back to BA document?
+[CHECK] HMW bridges EXPLORE (problem) to CREATE (solution)?
 
-1. ✅ Feature Description vorhanden? (1-2 Absätze)
-2. ✅ Benefits Hypothesis vollständig?
-3. ✅ User Stories vorhanden? (min. 1-3)
-4. ✅ Functional Acceptance Criteria testbar? (min. 3)
-5. ✅ Non-Functional Requirements quantifiziert?
-6. ✅ Architecture Considerations vorhanden?
-7. ✅ ASRs identifiziert und markiert? (🔴/🟡)
-8. ✅ Definition of Done vollständig?
-9. ✅ Dependencies dokumentiert?
-10. ✅ Out of Scope definiert?
+FORMAT:
+"How might we help [user] to [job], without [pain]?"
+
+EXAMPLE - GOOD:
+"HMW: How might we help Sales Managers create pipeline reports
+without manually aggregating data from 3 systems?
+(Source: BA Section 8, Primary HMW)"
+
+EXAMPLE - BAD:
+"How can we make things better?"
 ```
 
-#### User Story Format Validierung:
+#### Critical Hypotheses Table Validation:
 
 ```markdown
-CHECK jede User Story:
+CHECK:
+[CHECK] Critical Hypotheses table present?
+[CHECK] Each hypothesis linked to validating Feature(s)?
+[CHECK] Leading Indicators derived from hypotheses?
+[CHECK] Success criteria defined per hypothesis?
 
-✅ "Als [Rolle] möchte ich [Ziel], um [Nutzen] zu erreichen"
-✅ Rolle ist spezifisch (nicht nur "User")
-✅ Ziel ist klar und actionable
-✅ Nutzen ist business-orientiert
+FORMAT:
+| ID | Hypothesis | Validating Feature | Leading Indicator | Success Criterion |
+|----|------------|-------------------|-------------------|-------------------|
+| H1 | [assumption] | FEATURE-001 | [metric] | [threshold] |
+| H2 | [assumption] | FEATURE-002 | [metric] | [threshold] |
 
-Beispiel - GUT:
-✅ "Als Premium-Kunde möchte ich meine Bestellhistorie filtern,
-    um schnell bestimmte Käufe zu finden"
-
-Beispiel - SCHLECHT:
-❌ "Als User möchte ich Daten sehen"
-```
-
-#### Acceptance Criteria - Testbarkeits-Check:
-
-```markdown
-ERLAUBT (testbar):
-✅ "API Endpoint GET /api/users gibt HTTP 200 zurück"
-✅ "Response Zeit < 200ms für 95% der Requests"
-✅ "Alle User-Eingaben werden XSS-sanitized"
-✅ "Max 3 Klicks bis zur Ziel-Funktion"
-
-VERBOTEN (nicht testbar):
-❌ "System soll schnell sein"
-❌ "Sicheres System"
-❌ "User-friendly Interface"
-❌ "Gute Performance"
+EXAMPLE - GOOD:
+| H1 | Sales managers adopt automated reports if <1min generation | FEATURE-001 | Adoption rate week 1-2 | 80% prefer automated |
+| H2 | API data consolidated with <5% discrepancy | FEATURE-003 | Reconciliation delta | <5% across 100 records |
 ```
 
 ---
 
-### 4. Non-Functional Requirements (NFRs) - KRITISCH!
+### 3. Feature-Level Validation
 
-#### NFR Quantifizierungs-Validation:
+#### Mandatory Sections for Features:
 
 ```markdown
-PFLICHT-KATEGORIEN:
+CHECK on save:
+
+1. [CHECK] Feature Description present? (1-2 paragraphs)
+2. [CHECK] Benefits Hypothesis complete?
+3. [CHECK] User Stories present? (min. 1-3)
+4. [CHECK] Functional Acceptance Criteria testable? (min. 3)
+5. [CHECK] Non-Functional Requirements quantified?
+6. [CHECK] Architecture Considerations present?
+7. [CHECK] ASRs identified and marked? (CRITICAL/MODERATE)
+8. [CHECK] Definition of Done complete?
+9. [CHECK] Dependencies documented?
+10. [CHECK] Out of Scope defined?
+11. [CHECK] Jobs to be Done table present (3 job types)?
+12. [CHECK] User Stories structured by job type (functional/emotional/social)?
+13. [CHECK] Hypothesis Validation section present (if feature validates a hypothesis)?
+```
+
+#### Jobs to be Done Table Validation:
+
+```markdown
+CHECK:
+[CHECK] All 3 job types covered (functional/emotional/social)?
+[CHECK] Current solution identified per job?
+[CHECK] Desired outcome defined per job?
+
+FORMAT:
+| Job Type | Job Statement | Current Solution | Desired Outcome |
+|----------|--------------|-----------------|-----------------|
+| Functional | When [situation], I want to [action] | [current approach] | [desired state] |
+| Emotional | When [situation], I want to feel [emotion] | [current experience] | [desired feeling] |
+| Social | When [situation], I want to be perceived as [perception] | [current perception] | [desired perception] |
+
+EXAMPLE - GOOD:
+| Functional | When preparing weekly review, I want to pull all pipeline data into one view | Manual Excel from 3 sources (2h) | One-click generation (<5min) |
+| Emotional | When presenting to C-suite, I want to feel confident in my numbers | Anxiety about manual errors | Trust in automated accuracy |
+| Social | When sharing reports, I want to be seen as data-driven | Perceived as slow/manual | Perceived as analytical leader |
+```
+
+#### User Story Format Validation:
+
+```markdown
+CHECK each User Story:
+
+[CHECK] "As [role] I want to [goal], so that [benefit]"
+[CHECK] Role is specific (not just "user")
+[CHECK] Goal is clear and actionable
+[CHECK] Benefit is business-oriented
+[CHECK] Stories structured by job type (functional/emotional/social)?
+
+FORMAT:
+## Functional Stories
+"As [role] I want to [functional goal], so that [functional outcome]"
+
+## Emotional Stories
+"As [role] I want to [experience], so that I feel [emotion]"
+
+## Social Stories
+"As [role] I want to [visible action], so that [perception by others]"
+
+Example - GOOD:
+[CHECK] "As a Premium Customer I want to filter my order history,
+    so that I can quickly find specific purchases"
+
+Example - BAD:
+[X] "As a user I want to see data"
+```
+
+#### Hypothesis Validation Section:
+
+```markdown
+CHECK (only if feature validates a hypothesis):
+
+[CHECK] Linked hypothesis ID present?
+[CHECK] Validation approach described?
+[CHECK] Success criteria from hypothesis table referenced?
+[CHECK] Measurement method defined?
+
+FORMAT:
+### Hypothesis Validation
+- **Validates**: H1 -- "[hypothesis text]"
+- **Approach**: [how this feature tests the hypothesis]
+- **Measurement**: [what metric to track]
+- **Success Criterion**: [threshold from hypothesis table]
+- **Timeline**: [when to evaluate]
+```
+
+#### Acceptance Criteria - Testability Check:
+
+```markdown
+ALLOWED (testable):
+[CHECK] "API Endpoint GET /api/users returns HTTP 200"
+[CHECK] "Response time < 200ms for 95% of requests"
+[CHECK] "All user inputs are XSS-sanitized"
+[CHECK] "Max 3 clicks to reach target function"
+
+FORBIDDEN (not testable):
+[X] "System should be fast"
+[X] "Secure system"
+[X] "User-friendly interface"
+[X] "Good performance"
+```
+
+---
+
+### 4. Non-Functional Requirements (NFRs) -- CRITICAL
+
+#### NFR Quantification Validation:
+
+```markdown
+MANDATORY CATEGORIES:
 
 1. **Performance**
-   ✅ Response Time: [X ms für Y% der Requests]
-   ✅ Throughput: [X Requests/Second]
-   ✅ Resource Usage: [Max CPU/Memory]
+   [CHECK] Response Time: [X ms for Y% of requests]
+   [CHECK] Throughput: [X requests/second]
+   [CHECK] Resource Usage: [Max CPU/Memory]
 
 2. **Security**
-   ✅ Authentication: [OAuth 2.0, JWT, etc.]
-   ✅ Authorization: [RBAC, ABAC, etc.]
-   ✅ Encryption: [At Rest: AES-256, In Transit: TLS 1.3]
-   ✅ Compliance: [GDPR Art. X, SOC2, HIPAA]
+   [CHECK] Authentication: [OAuth 2.0, JWT, etc.]
+   [CHECK] Authorization: [RBAC, ABAC, etc.]
+   [CHECK] Encryption: [At Rest: AES-256, In Transit: TLS 1.3]
+   [CHECK] Compliance: [GDPR Art. X, SOC2, HIPAA]
 
 3. **Scalability**
-   ✅ Concurrent Users: [X simultane User]
-   ✅ Data Volume: [Y GB/TB]
-   ✅ Growth Rate: [Z% pro Jahr]
+   [CHECK] Concurrent Users: [X simultaneous users]
+   [CHECK] Data Volume: [Y GB/TB]
+   [CHECK] Growth Rate: [Z% per year]
 
 4. **Availability**
-   ✅ Uptime: [99.9% = ~8.7h Downtime/Jahr]
-   ✅ RTO (Recovery Time): [X Minuten]
-   ✅ RPO (Recovery Point): [X Minuten]
+   [CHECK] Uptime: [99.9% = ~8.7h downtime/year]
+   [CHECK] RTO (Recovery Time): [X minutes]
+   [CHECK] RPO (Recovery Point): [X minutes]
 
 5. **Maintainability**
-   ✅ Code Coverage: [Min. X%]
-   ✅ Documentation Requirements
-   ✅ Logging Requirements
+   [CHECK] Code Coverage: [Min. X%]
+   [CHECK] Documentation Requirements
+   [CHECK] Logging Requirements
 ```
 
-**Beispiele - GUT vs SCHLECHT:**
+**Examples - GOOD vs BAD:**
 
 ```markdown
-❌ SCHLECHT (vage):
-"System soll schnell und skalierbar sein mit hoher Verfügbarkeit"
+[X] BAD (vague):
+"System should be fast and scalable with high availability"
 
-✅ GUT (quantifiziert):
+[CHECK] GOOD (quantified):
 Performance:
-  - Response Time: < 200ms für 95% der Requests, < 500ms für 99%
-  - Throughput: Min. 100 Requests/Second
+  - Response Time: < 200ms for 95% of requests, < 500ms for 99%
+  - Throughput: Min. 100 requests/second
 
 Scalability:
-  - Support für 10,000 concurrent users
-  - Handling von 1TB Datenvolumen
+  - Support for 10,000 concurrent users
+  - Handling of 1TB data volume
 
 Availability:
-  - Uptime: 99.9% (max 8.7h Downtime/Jahr)
-  - RTO: 15 Minuten
-  - RPO: 5 Minuten
+  - Uptime: 99.9% (max 8.7h downtime/year)
+  - RTO: 15 minutes
+  - RPO: 5 minutes
 ```
 
 ---
 
-### 5. Architecturally Significant Requirements (ASRs) - KRITISCH!
+### 5. Architecturally Significant Requirements (ASRs) -- CRITICAL
 
-#### ASR Identifikation & Markierung:
+#### ASR Identification & Marking:
 
 ```markdown
 CHECK Architecture Considerations Section:
 
-✅ Mindestens 1 ASR identifiziert?
-✅ ASRs mit 🔴 (Critical) oder 🟡 (Moderate) markiert?
-✅ Für jedes ASR erklärt WARUM es architektur-relevant ist?
-✅ Quality Attribute zugeordnet? (Performance/Security/etc.)
-✅ Impact auf Architektur beschrieben?
+[CHECK] At least 1 ASR identified?
+[CHECK] ASRs marked as CRITICAL or MODERATE?
+[CHECK] For each ASR: explained WHY it is architecturally relevant?
+[CHECK] Quality Attribute assigned? (Performance/Security/etc.)
+[CHECK] Impact on architecture described?
 
 ASR Template:
-🔴 **CRITICAL ASR #1**: [Beschreibung]
-- **Warum ASR**: [Begründung]
-- **Impact**: [Architektur-Entscheidung die benötigt wird]
+CRITICAL ASR #1: [Description]
+- **Why ASR**: [Rationale]
+- **Impact**: [Architecture decision required]
 - **Quality Attribute**: [Performance/Security/Scalability/etc.]
-- **Constraint**: [Technische/Business Constraints]
+- **Constraint**: [Technical/Business Constraints]
 ```
 
-**Beispiele für ASRs:**
+**Examples for ASRs:**
 
 ```markdown
-✅ GUT - ASR richtig identifiziert:
+[CHECK] GOOD - ASR correctly identified:
 
-🔴 **CRITICAL ASR**: Response Time < 200ms für 95% der Requests
-- **Warum ASR**: Beeinflusst fundamentale Architektur-Entscheidungen
-- **Impact**: 
-  - Benötigt Caching-Layer (Redis/Memcached)
-  - Benötigt CDN für statische Assets
-  - Benötigt Load Balancing
+CRITICAL ASR: Response Time < 200ms for 95% of requests
+- **Why ASR**: Influences fundamental architecture decisions
+- **Impact**:
+  - Requires caching layer (Redis/Memcached)
+  - Requires CDN for static assets
+  - Requires load balancing
 - **Quality Attribute**: Performance
 
-🟡 **MODERATE ASR**: GDPR Art. 17 (Right to be Forgotten)
-- **Warum ASR**: Beeinflusst Data Architecture
+MODERATE ASR: GDPR Art. 17 (Right to be Forgotten)
+- **Why ASR**: Influences data architecture
 - **Impact**:
-  - Soft Delete Pattern erforderlich
-  - Data Retention Policies
+  - Soft delete pattern required
+  - Data retention policies
 - **Quality Attribute**: Security/Compliance
 
-❌ SCHLECHT - Kein ASR, nur NFR:
+[X] BAD - Not an ASR, just an NFR:
 
 "Code Coverage > 80%"
-→ Das ist ein NFR, aber KEIN ASR (beeinflusst keine Architektur)
+-> This is an NFR, but NOT an ASR (does not influence architecture)
 ```
 
 ---
 
-### 6. Definition of Done Vollständigkeits-Check
+### 6. Definition of Done Completeness Check
 
 ```markdown
 CHECK Definition of Done:
 
-✅ Alle Functional Acceptance Criteria als Checkboxen?
-✅ NFR-Validierung inkludiert?
-✅ Testing Requirements definiert?
+[CHECK] All Functional Acceptance Criteria as checkboxes?
+[CHECK] NFR validation included?
+[CHECK] Testing Requirements defined?
    - Unit Tests (Coverage %)
    - Integration Tests
-   - Performance Tests (wenn relevant)
+   - Performance Tests (if relevant)
    - Security Tests
-✅ Review Gates definiert?
+[CHECK] Review Gates defined?
    - Architecture Review
    - Code Review
    - UAT
-✅ Documentation Requirements?
+[CHECK] Documentation Requirements?
 
 Minimum DoD:
-- [ ] Alle Functional Acceptance Criteria erfüllt
-- [ ] Alle NFRs validiert
+- [ ] All Functional Acceptance Criteria met
+- [ ] All NFRs validated
 - [ ] Unit Tests (Coverage > [X%])
-- [ ] Integration Tests bestanden
-- [ ] Security Scan bestanden
-- [ ] Architecture Review abgeschlossen
-- [ ] Code Review abgeschlossen
-- [ ] Documentation aktualisiert
-- [ ] Deployed in Staging
-- [ ] UAT bestanden
+- [ ] Integration Tests passed
+- [ ] Security Scan passed
+- [ ] Architecture Review completed
+- [ ] Code Review completed
+- [ ] Documentation updated
+- [ ] Deployed to Staging
+- [ ] UAT passed
 ```
 
 ---
 
-### 7. Architect-Handoff-Dokument Validierung
+### 7. Architect Handoff Document Validation
 
-#### Pflicht-Sections für Architect Handoff:
+#### Mandatory Sections for Architect Handoff:
 
 ```markdown
 CHECK requirements/handoff/architect-handoff.md:
 
-1. ✅ Executive Summary vorhanden?
-2. ✅ Requirements Package vollständig?
-3. ✅ ASRs Section vorhanden?
-4. ✅ NFR Summary Table vorhanden?
-5. ✅ Context & Integration Section?
-6. ✅ Technology Stack Recommendations?
-7. ✅ Constraints dokumentiert?
-8. ✅ Open Questions Section?
-9. ✅ Next Steps for Architect definiert?
-10. ✅ Traceability Matrix vorhanden?
-11. ✅ Success Criteria definiert?
+1. [CHECK] Executive Summary present?
+2. [CHECK] Requirements Package complete?
+3. [CHECK] ASRs Section present?
+4. [CHECK] NFR Summary Table present?
+5. [CHECK] Context & Integration Section?
+6. [CHECK] Technology Stack Recommendations?
+7. [CHECK] Constraints documented?
+8. [CHECK] Open Questions Section?
+9. [CHECK] Next Steps for Architect defined?
+10. [CHECK] Traceability Matrix present?
+11. [CHECK] Success Criteria defined?
 ```
 
 ---
 
-## 📊 Quality Gate: Architect-Ready Check
+## Quality Gate: Architect-Ready Check
 
-**Ein Feature/Epic ist Architect-Ready wenn:**
+**A Feature/Epic is Architect-Ready when:**
 
 ### Epic-Level (PoC/MVP):
 ```
-✅ Hypothesis Statement vollständig (7/7 Komponenten)
-✅ Business Outcomes quantifiziert (Baseline, Target, Timeframe)
-✅ Leading Indicators definiert
-✅ Features priorisiert (P0/P1/P2)
-✅ Out-of-Scope explizit definiert
-✅ Dependencies dokumentiert
-✅ Technical Debt dokumentiert (PoC only)
+[CHECK] Hypothesis Statement complete (7/7 components)
+[CHECK] Business Outcomes quantified (Baseline, Target, Timeframe)
+[CHECK] Leading Indicators defined
+[CHECK] Features prioritized (P0/P1/P2)
+[CHECK] Out-of-Scope explicitly defined
+[CHECK] Dependencies documented
+[CHECK] Technical Debt documented (PoC only)
+[CHECK] HMW question present and linked to BA
+[CHECK] Critical Hypotheses table present with Feature links
+[CHECK] Leading Indicators derived from hypotheses
 ```
 
 ### Feature-Level:
 ```
-✅ Benefits Hypothesis klar
-✅ User Stories vollständig (Als/möchte/um)
-✅ Acceptance Criteria testbar (pass/fail)
-✅ NFRs quantifiziert (ALLE mit Zahlen!)
-✅ ASRs identifiziert und markiert (🔴/🟡)
-✅ Architecture Impact beschrieben
-✅ Definition of Done vollständig
-✅ Dependencies dokumentiert
-✅ Out of Scope definiert
+[CHECK] Benefits Hypothesis clear
+[CHECK] User Stories complete (As/want/so that)
+[CHECK] User Stories structured by job type (functional/emotional/social)
+[CHECK] Jobs to be Done table present (3 job types)
+[CHECK] Acceptance Criteria testable (pass/fail)
+[CHECK] NFRs quantified (ALL with numbers!)
+[CHECK] ASRs identified and marked (CRITICAL/MODERATE)
+[CHECK] Architecture Impact described
+[CHECK] Definition of Done complete
+[CHECK] Dependencies documented
+[CHECK] Out of Scope defined
+[CHECK] Hypothesis Validation section present (if validates a hypothesis)
 ```
 
 ### Handoff-Level:
 ```
-✅ Alle Epics/Features verlinkt
-✅ Alle ASRs in Handoff-Dokument gelistet
-✅ NFR Summary Table vorhanden
-✅ Open Questions priorisiert
-✅ Constraints dokumentiert
-✅ Traceability Matrix vorhanden
-✅ Success Criteria definiert
+[CHECK] All Epics/Features linked
+[CHECK] All ASRs listed in handoff document
+[CHECK] NFR Summary Table present
+[CHECK] Open Questions prioritized
+[CHECK] Constraints documented
+[CHECK] Traceability Matrix present
+[CHECK] Success Criteria defined
 ```
 
-**Wenn ALLE Checks ✅:**
+**When ALL checks pass:**
 ```
-🎉 ARCHITECT-READY!
+ARCHITECT-READY!
 
-Status: Alle Validierungen bestanden
-Next: Übergabe an Architect Agent
+Status: All validations passed
+Next: Handoff to Architect Agent
 
-Der Architekt kann jetzt:
-  1. ASRs reviewen
-  2. ADRs erstellen
-  3. ARC42 Documentation starten
-  4. Technology Stack Decisions treffen
+The Architect can now:
+  1. Review ASRs
+  2. Create ADRs
+  3. Start ARC42 Documentation
+  4. Make Technology Stack Decisions
 ```
 
 ---
 
-## 🔄 Feedback-Loops
+## Feedback Loops
 
-### Mit Business Analyst
+### With Business Analyst
 
 ```markdown
-Feedback-Types an BA:
+Feedback Types to BA:
 
 1. **MISSING_CRITICAL_INFO**
-   → Beispiel: "User Personas nicht definiert"
-   
+   -> Example: "User Personas not defined"
+
 2. **UNCLEAR_SCOPE**
-   → Beispiel: "In-Scope vs Out-of-Scope unklar"
-   
+   -> Example: "In-Scope vs Out-of-Scope unclear"
+
 3. **MISSING_BUSINESS_OUTCOMES**
-   → Beispiel: "Keine messbaren Business Outcomes"
+   -> Example: "No measurable Business Outcomes"
+
+4. **MISSING_HMW**
+   -> "No How-Might-We question in BA document.
+      Required for Epic context and EXPLORE-to-CREATE bridge.
+      Please add HMW question to BA Section 8."
+
+5. **MISSING_HYPOTHESES**
+   -> "No critical hypotheses identified in BA document.
+      Required for hypothesis-driven Feature validation.
+      Please add Critical Hypotheses to BA Section 7.3."
+
+6. **MISSING_JOBS**
+   -> "Jobs to be Done not defined in BA document.
+      Required for structuring User Stories by job type.
+      Please add JTBD (functional/emotional/social) to BA Section 5.4."
 ```
 
-### Mit Architekt
+### With Architect
 
 ```markdown
-Feedback-Types von Architect:
+Feedback Types from Architect:
 
 1. **REQUIREMENTS_UNCLEAR**
-   → Konkretisiere betroffenes Feature
-   
+   -> Clarify affected feature
+
 2. **NEED_ADDITIONAL_NFR**
-   → Ergänze fehlende NFR mit Zahlen
-   
+   -> Add missing NFR with numbers
+
 3. **ASR_NOT_CLEAR**
-   → Erkläre besser WARUM es ein ASR ist
+   -> Better explain WHY it is an ASR
 ```
 
 ---
 
-## 📋 Zusammenfassung
+## Summary
 
-Diese Instructions stellen sicher:
+These instructions ensure:
 
-✅ **Epic-Qualität** - Vollständige Business-Context für Architekt  
-✅ **Feature-Qualität** - Testbare Acceptance Criteria, quantifizierte NFRs  
-✅ **ASR-Identifikation** - Architekt weiß welche Requirements kritisch sind  
-✅ **NFR-Quantifizierung** - Keine vagen Aussagen, nur Zahlen  
-✅ **Handoff-Vollständigkeit** - Architekt hat alle Informationen  
-✅ **Traceability** - Jedes Requirement zu Business Goal verbunden  
+[CHECK] **Epic Quality** - Complete business context for Architect
+[CHECK] **Feature Quality** - Testable Acceptance Criteria, quantified NFRs
+[CHECK] **ASR Identification** - Architect knows which requirements are critical
+[CHECK] **NFR Quantification** - No vague statements, only numbers
+[CHECK] **Handoff Completeness** - Architect has all information
+[CHECK] **Traceability** - Every requirement linked to business goal
+[CHECK] **HMW Linkage** - EXPLORE-to-CREATE bridge maintained
+[CHECK] **Hypothesis Validation** - Features linked to testable hypotheses
+[CHECK] **Jobs to be Done** - User Stories structured by job type
 
-**Ziel:** Architekt kann **sofort** mit ADRs und ARC42 starten, ohne zurück zu fragen!
+**Goal:** Architect can **immediately** start with ADRs and ARC42, without asking back!
 
 ---
 
-**Version:** 4.0 (Aktualisiert für GitHub Copilot Agents)
-**Focus:** Epics & Features only (keine Issues/Tasks)
+**Version:** 5.0 (Updated for innovation-driven requirements)
+**Focus:** Epics & Features only (no Issues/Tasks)
 **Quality Gate:** Architect-Ready Validation
