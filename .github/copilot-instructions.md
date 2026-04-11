@@ -1,288 +1,209 @@
 # GitHub Copilot - Global Instructions
 
-> **Auto-loaded:** Diese Instructions werden automatisch bei jedem Copilot Request geladen und ergänzen die spezialisierten Chatmodes.
+> **Auto-loaded:** These instructions are automatically loaded with every Copilot request and complement the specialized agents/chatmodes.
 
-PRÜFE IMMER ZUERST, WELCHER CHATMODE AKTIV IST! Befolge die Anweisungen des aktiven Chatmodes.
+ALWAYS CHECK WHICH CHATMODE IS ACTIVE FIRST! Follow the instructions of the active chatmode.
 
-## 🎯 Available Chat Modes
+## Available Agents
 
-### 1. **@business-analyst** - Requirements Discovery
-Strukturierte Exploration und Ideation von rohen Projektideen zu vollständigem Business Analysis Dokument.
+### 1. **@business-analyst** - Innovation & Discovery
 
-**Input:** Rohe Projektidee oder Problembeschreibung  
-**Output:** `docs/business-analysis/BA-[PROJECT].md`  
+Structured EXPLORE/CREATE/EVALUATE cycle from raw project idea to complete Business Analysis document.
+
+**Input:** Raw project idea or problem description
+**Output:** `_devprocess/analysis/BA-{PROJECT}.md`, `_devprocess/analysis/EXPLORE-{PROJECT}.md`
 **Handoff to:** @requirements-engineer
 
 **Phases:**
 - Scope Detection (Simple Test / PoC / MVP)
-- Business Context Discovery
-- User Research & Personas
-- Problem & Solution Definition
-- Features & Requirements Capture
-- Success Metrics Definition
+- EXPLORE: User research, needs (functional/emotional/social), insights, trends, competitors, touchpoints, How-Might-We synthesis
+- CREATE: Solution idea, idea potential (3 axes), the Wow, jobs to be done, critical hypotheses, value proposition
+- EVALUATE: VP score, assessment radar, pricing, channels, unfair advantage, revenue stream (PoC/MVP only)
+
+**Probing Techniques:** 5-Why, concretization, future projection, perspective shift, emotional probing, analogy triggers. See `innovation-methods.md` for full method reference.
 
 ---
 
 ### 2. **@requirements-engineer** - Requirements Structuring
-Transformiert Business Analysis in strukturierte Epics, Features und ASRs (Architecture-Significant Requirements).
 
-**Input:** Business Analysis Dokument ODER direkter User-Input  
+Transforms Business Analysis into structured Epics, Features, and ASRs (Architecture-Significant Requirements).
+
+**Input:** Business Analysis document (with HMW, needs, jobs to be done, critical hypotheses)
 **Output:**
-- `requirements/epics/*.md` - Strategische Initiativen
-- `requirements/features/*.md` - Funktionale Capabilities
-- `requirements/handoff/architect-handoff.md` - Übergabe-Dokument
+- `_devprocess/requirements/epics/*.md` - Strategic initiatives
+- `_devprocess/requirements/features/*.md` - Functional capabilities
+- `_devprocess/requirements/handoff/architect-handoff.md` - Handoff document
 
 **Handoff to:** @architect
 
+**Key transformations:**
+- HMW question -> Epic Hypothesis Statement
+- Needs + Jobs to be Done -> User Stories (functional/emotional/social)
+- Critical Hypotheses -> Feature Validation criteria
+- Idea Potential -> Feature Prioritization
+
 **Quality Gate 1 (QG1) - Requirements Ready:**
-- ✅ Alle Epics mit klaren Business Outcomes
-- ✅ Features mit Benefits Hypothesis
-- ✅ NFRs vollständig dokumentiert
-- ✅ ASRs explizit markiert
-- ✅ Architect-Handoff-Dokument vollständig
+- All Epics with HMW reference and quantified Business Outcomes
+- Features with Jobs to be Done and Benefits Hypothesis
+- NFRs fully documented and quantified
+- ASRs explicitly marked (CRITICAL/MODERATE)
+- Critical Hypotheses tracked with feature links
+- Architect handoff document complete
 
 ---
 
 ### 3. **@architect** - Technical Architecture Design
-Erstellt technische Architektur, ADRs, arc42 Dokumentation und developer-ready Issues.
 
-**Input:** `requirements/handoff/architect-handoff.md`  
+Creates technical architecture, ADRs, arc42 documentation, and developer-ready issues.
+
+**Input:** `_devprocess/requirements/handoff/architect-handoff.md`
 **Output:**
-- `docs/decisions/*.md` - Architecture Decision Records (MADR)
-- `docs/arc42/*.md` - arc42 Architekturdokumentation
-- `.github/issues/*.md` - Developer-ready GitHub Issues
-- Mermaid Diagramme (C4 Model, Sequenzdiagramme)
+- `_devprocess/architecture/decisions/*.md` - Architecture Decision Records (MADR)
+- `_devprocess/architecture/arc42/*.md` - arc42 documentation
+- Mermaid diagrams (C4 Model, sequence diagrams)
+- `_devprocess/architecture/plan-context.md` - Context handoff for coding
 
 **Handoff to:** @developer
 
 **Quality Gate 2 (QG2) - Architecture Ready:**
-- ✅ ADRs für alle architekturrelevanten Entscheidungen
-- ✅ arc42 Dokumentation (scope-angepasst)
-- ✅ Technologie-Stack definiert
-- ✅ System-Design mit Diagrammen
-- ✅ Developer Issues priorisiert und vollständig
+- ADRs for all architecturally relevant decisions
+- arc42 documentation (scope-adjusted)
+- Technology stack defined
+- System design with diagrams
+- plan-context.md complete
 
 **Complexity Scaling:**
-- **Simple Test:** Minimal ADRs, kein arc42, direkte Implementation
-- **PoC:** Basis-ADRs, reduziertes arc42, fokussierte Issues
-- **MVP:** Vollständige ADRs, umfassendes arc42, detaillierte Issues
+- **Simple Test:** Minimal ADRs, no arc42, direct implementation
+- **PoC:** Basic ADRs, reduced arc42, focused scope
+- **MVP:** Full ADRs, comprehensive arc42, detailed design
 
 ---
 
 ### 4. **@developer** - Test-Driven Implementation
-Implementiert atomic tasks mit mandatory Testing und automatischem Error Logging.
 
-**Input:** Developer Issues aus `backlog/tasks/<FEATURE-ID>/`  
+Implements atomic tasks with mandatory testing and automatic error logging.
+
+**Input:** plan-context.md + ADRs + Features
 **Output:**
-- Production Code mit Tests
-- Test Execution Reports
-- `logs/ERROR-TASK-*.md` (bei Failures)
-- Updated `Backlog.md`
+- Production code with tests
+- Test execution reports
+- Updated artifacts (features, ADRs reflect what was actually built)
 
-**If tests fail → Auto-handoff to:** @debugger
+**If tests fail -> Auto-handoff to:** @debugger
 
 **Quality Gate 3 (QG3) - Development Ready:**
-- ✅ ALL tests must pass (or error log created)
-- ✅ Code coverage ≥90%
-- ✅ Type hints und docstrings complete
-- ✅ Clean code principles applied
-- ✅ No TODOs or placeholders
-- ✅ Atomic commits per task
+- ALL tests must pass (or error log created)
+- Code coverage >= 90%
+- Clean code principles applied
+- No TODOs or placeholders
+- Artifacts updated to reflect actual implementation
 
 **Core Principles:**
 - Write tests AS you code (not after)
 - Execute full canonical test suite (MANDATORY)
 - Quality over speed
 - No over-engineering
+- Living documents: write changes back to artifacts during implementation
 
 ---
 
 ### 5. **@debugger** - Systematic Error Resolution
-Analysiert Error Logs, identifiziert Root Causes, implementiert saubere Fixes.
 
-**Input:** `logs/ERROR-TASK-*.md` from @developer  
+Analyzes error logs, identifies root causes, implements clean fixes.
+
+**Input:** Error logs from @developer
 **Output:**
 - Fixed code with updated tests
 - Complete test suite validation
 - Resolution documentation in error log
 
-**Returns to:** @developer (nach Fix-Validierung)
+**Returns to:** @developer (after fix validation)
 
 **Quality Gate Debug (QGD):**
-- ✅ Root cause identified (not just symptoms)
-- ✅ Clean fix implemented (no workarounds)
-- ✅ Tests updated/added
-- ✅ ALL tests pass (entire suite)
-- ✅ No regressions introduced
-- ✅ Fix documented with learnings
+- Root cause identified (not just symptoms)
+- Clean fix implemented (no workarounds)
+- Tests updated/added
+- ALL tests pass (entire suite)
+- No regressions introduced
+- Fix documented with learnings
 
 ---
 
-## 🔄 Complete Workflow
+## Complete Workflow
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│  Phase 0: Discovery                                             │
-│  @business-analyst                                              │
-│  ├─ Scope Detection (Simple/PoC/MVP)                           │
-│  ├─ Business Context & User Research                            │
-│  ├─ Problem/Solution Definition                                 │
-│  └─ Output: docs/business-analysis/BA-[PROJECT].md             │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │ Handoff
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  Phase 1: Requirements Engineering                              │
-│  @requirements-engineer                                         │
-│  ├─ Create Epics (Strategic Initiatives)                       │
-│  ├─ Define Features (Functional Capabilities)                   │
-│  ├─ Document NFRs & ASRs                                        │
-│  └─ Output: requirements/epics/*.md                             │
-│             requirements/features/*.md                          │
-│             requirements/handoff/architect-handoff.md           │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │ QG1: Requirements Ready?
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  Phase 2: Architecture Design                                   │
-│  @architect                                                     │
-│  ├─ Create ADRs (Architecture Decisions)                       │
-│  ├─ Generate arc42 Documentation                               │
-│  ├─ Design System (C4 Model, Mermaid)                          │
-│  ├─ Create Developer Issues                                     │
-│  └─ Output: docs/decisions/*.md                                 │
-│             docs/arc42/*.md                                     │
-│             .github/issues/*.md                                 │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │ QG2: Architecture Ready?
-                       ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  Phase 3: Implementation                                        │
-│  @developer                                                     │
-│  ├─ Implement atomic tasks                                     │
-│  ├─ Write tests AS you code                                    │
-│  ├─ Execute canonical test suite (MANDATORY)                   │
-│  ├─ Pass: Commit atomically                                    │
-│  └─ Fail: Create error log → @debugger                         │
-│     Output: src/**/*.py, tests/**/*.py                          │
-│             logs/ERROR-TASK-*.md (on failure)                   │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │ QG3: All Tests Pass?
-                       ├─ YES ──────────────────┐
-                       │                        ▼
-                       │              ┌──────────────────┐
-                       │              │   Production     │
-                       │              │   Ready! ✅      │
-                       │              └──────────────────┘
-                       │
-                       └─ NO ──────────────────┐
-                                               ▼
-                       ┌─────────────────────────────────────┐
-                       │  Debug Phase                        │
-                       │  @debugger                          │
-                       │  ├─ Read error log                  │
-                       │  ├─ Analyze root cause              │
-                       │  ├─ Implement clean fix             │
-                       │  ├─ Update/add tests                │
-                       │  ├─ Run ENTIRE test suite           │
-                       │  └─ Document resolution             │
-                       └────────────┬────────────────────────┘
-                                    │ QGD: Fix Validated?
-                                    └──► Return to @developer
+Phase 0: Innovation & Discovery
+  @business-analyst
+  - EXPLORE: Users, needs, insights, trends, competitors
+  - CREATE: Solution idea, idea potential, hypotheses, value proposition
+  - EVALUATE: VP score, assessment radar, pricing, channels, revenue
+  - Output: BA-{PROJECT}.md + EXPLORE-{PROJECT}.md
+                     |
+                     | Handoff (HMW, needs, JTBD, hypotheses)
+                     v
+Phase 1: Requirements Engineering
+  @requirements-engineer
+  - HMW -> Epic Hypothesis Statement
+  - Needs + JTBD -> User Stories (functional/emotional/social)
+  - Critical Hypotheses -> Feature Validation
+  - Output: Epics, Features, architect-handoff.md
+                     |
+                     | QG1: Requirements Ready?
+                     v
+Phase 2: Architecture Design
+  @architect
+  - ADRs, arc42, system design, plan-context.md
+                     |
+                     | QG2: Architecture Ready?
+                     v
+Phase 3: Implementation
+  @developer
+  - Load context from plan-context.md
+  - Implement with tests
+  - Write changes back to artifacts
+                     |
+                     | QG3: All Tests Pass?
+                     |-- YES -> Production Ready
+                     |-- NO  -> @debugger -> fix -> return to @developer
 ```
 
 ---
 
-## 📊 Quality Gates Summary
+## Quality Gates Summary
 
-| Gate | Owner | Criteria | Blocks |
-|------|-------|----------|--------|
-| **QG1** | @requirements-engineer | Epics complete, Features defined, ASRs marked, Handoff ready | Architecture Phase |
-| **QG2** | @architect | ADRs created, arc42 done, Issues ready, Stack defined | Development Phase |
-| **QG3** | @developer | All tests pass, Coverage ≥90%, Clean code, No TODOs | Production Deployment |
-| **QGD** | @debugger | Root cause fixed, All tests pass, No regressions | Return to Development |
+| Gate | Owner | Key Criteria | Blocks |
+|------|-------|-------------|--------|
+| **QG1** | @requirements-engineer | Epics with HMW, Features with JTBD, ASRs marked, Hypotheses tracked | Architecture Phase |
+| **QG2** | @architect | ADRs created, arc42 done, plan-context.md complete | Development Phase |
+| **QG3** | @developer | All tests pass, coverage >= 90%, artifacts updated | Production |
+| **QGD** | @debugger | Root cause fixed, all tests pass, no regressions | Return to Development |
 
 ---
 
-## 🎯 Mode Selection Guide
+## Agent Selection Guide
 
 **Start with @business-analyst when:**
-- ❓ You have a rough idea or problem to solve
-- 🆕 Starting a new project from scratch
-- 🤔 Need to explore and structure requirements
+- You have a rough idea or problem to solve
+- Starting a new project from scratch
+- Need to explore and structure requirements
+- Want innovation methods (EXPLORE/CREATE/EVALUATE)
 
 **Start with @requirements-engineer when:**
-- 📄 You already have a Business Analysis document
-- ✍️ You have clear requirements but need structuring
-- 🎯 You want to skip discovery and go straight to Epics/Features
+- You already have a Business Analysis document
+- You have clear requirements but need structuring
+- You want to skip discovery and go straight to Epics/Features
 
 **Start with @architect when:**
-- 🏗️ You have complete requirements and need technical design
-- 📋 You have `requirements/handoff/architect-handoff.md` ready
-- 🔧 You need ADRs, arc42 docs, or system design
+- You have complete requirements and need technical design
+- You have `architect-handoff.md` ready
+- You need ADRs, arc42 docs, or system design
 
 **Start with @developer when:**
-- 💻 Architecture is complete and you're ready to code
-- 📝 You have developer-ready issues in backlog
-- 🧪 You want to implement with test-driven approach
+- Architecture is complete and you are ready to code
+- You have plan-context.md and feature specs
+- You want to implement with test-driven approach
 
 **Use @debugger when:**
-- 🐛 Tests are failing after implementation
-- 📋 You have error logs from @developer
-- 🔍 You need systematic root cause analysis
-
----
-
-## 📁 Project Structure
-
-```
-notion-import-kilocode/
-├── docs/
-│   ├── business-analysis/     # @business-analyst outputs
-│   ├── decisions/              # @architect ADRs (MADR format)
-│   └── arc42/                  # @architect architecture docs
-├── requirements/
-│   ├── epics/                  # @requirements-engineer epics
-│   ├── features/               # @requirements-engineer features
-│   └── handoff/                # @requirements-engineer → @architect
-├── backlog/
-│   └── tasks/                  # @architect → @developer issues
-├── src/                        # @developer implementation
-├── tests/                      # @developer test code
-├── logs/                       # @developer error logs
-└── .github/
-    ├── chatmodes/              # Chat mode definitions
-    ├── instructions/           # Auto-validation rules
-    └── templates/              # Document templates
-```
-
----
-
-## 🚀 Quick Start Examples
-
-### Starting a New Project
-```
-User: "I want to build a Notion importer for processing markdown files"
-→ Use: @business-analyst
-```
-
-### Have Requirements, Need Architecture
-```
-User: "Here's my requirements doc, design the architecture"
-→ Use: @architect
-→ Provide: requirements/handoff/architect-handoff.md
-```
-
-### Ready to Code
-```
-User: "Implement issue #42 from the backlog"
-→ Use: @developer
-→ Provide: Issue path in backlog/tasks/
-```
-
-### Tests Failing
-```
-User: "Tests failed, check logs/ERROR-TASK-001-*.md"
-→ Use: @debugger
-→ Provide: Error log path
-```
+- Tests are failing after implementation
+- You have error logs from @developer
+- You need systematic root cause analysis
