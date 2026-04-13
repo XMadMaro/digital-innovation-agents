@@ -11,6 +11,7 @@ set -euo pipefail
 
 SKILLS_DIR="$HOME/.claude/skills"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 REPO_URL="https://github.com/pssah4/digital-innovation-agents.git"
 VERSION=""
 
@@ -32,6 +33,11 @@ Usage:
   ./install-skills.sh --help             Show this help
 
 Available releases: https://github.com/pssah4/digital-innovation-agents/releases
+
+Note: v2+ uses plugin marketplaces as the primary installation method.
+      See README.md for Claude Code, Cursor, Codex, OpenCode, Gemini CLI,
+      and GitHub Copilot installation instructions. This script remains
+      available as a legacy fallback.
 EOF
       exit 0
       ;;
@@ -55,11 +61,23 @@ if [ -n "$VERSION" ]; then
     echo "       Check: gh release list --repo pssah4/digital-innovation-agents" >&2
     exit 1
   fi
-  SOURCE_DIR="$TMPDIR/repo/claude-code-skills"
-  echo "Source:  release $VERSION"
+  # Auto-detect: v2+ has skills/, v1 has claude-code-skills/
+  if [ -d "$TMPDIR/repo/skills" ]; then
+    SOURCE_DIR="$TMPDIR/repo/skills"
+  elif [ -d "$TMPDIR/repo/claude-code-skills" ]; then
+    SOURCE_DIR="$TMPDIR/repo/claude-code-skills"
+  else
+    echo "ERROR: Neither skills/ nor claude-code-skills/ found in $VERSION" >&2
+    exit 1
+  fi
+  echo "Source:  release $VERSION ($(basename "$SOURCE_DIR")/)"
 else
-  SOURCE_DIR="$SCRIPT_DIR"
-  echo "Source:  current directory (development mode)"
+  SOURCE_DIR="$REPO_ROOT/skills"
+  if [ ! -d "$SOURCE_DIR" ]; then
+    echo "ERROR: $SOURCE_DIR not found. Run from a checkout with skills/ directory." >&2
+    exit 1
+  fi
+  echo "Source:  current checkout (development mode)"
 fi
 
 echo "Target:  $SKILLS_DIR"
@@ -78,6 +96,7 @@ SKILLS=(
   "testing"
   "security-audit"
   "v-model-workflow"
+  "using-digital-innovation-agents"
 )
 
 for skill in "${SKILLS[@]}"; do
@@ -104,10 +123,13 @@ echo "=== Installation complete ==="
 echo ""
 echo "Installed skills:"
 for skill in "${SKILLS[@]}"; do
-  echo "  /$skill"
+  if [ -d "$SKILLS_DIR/$skill" ]; then
+    echo "  /$skill"
+  fi
 done
 echo ""
 echo "Usage in Claude Code:"
+echo "  /v-model-workflow          -- Orchestrator for the full cycle"
 echo "  /business-analyse          -- Structured problem analysis (Exploration/Ideation/Validation)"
 echo "  /requirements-engineering  -- Features, epics, success criteria"
 echo "  /architecture              -- ADRs, arc42, plan-context.md"
@@ -115,6 +137,8 @@ echo "  /coding                    -- Context handoff from plan-context.md"
 echo "  /testing                   -- Unit & integration tests"
 echo "  /security-audit            -- Security review after implementation"
 echo "  /project-conventions       -- Project structure & naming conventions"
-echo "  /v-model-workflow          -- Orchestrator for the full cycle"
 echo ""
 echo "Verify: Open Claude Code and type / -- skills should appear in autocomplete."
+echo ""
+echo "Note: For v2, the recommended installation is via plugin marketplace."
+echo "      See README.md for Claude Code, Cursor, Codex, OpenCode, Gemini CLI."
