@@ -89,6 +89,7 @@ mkdir -p "$SKILLS_DIR"
 # Skills to install
 SKILLS=(
   "project-conventions"
+  "reverse-engineering"
   "business-analyse"
   "requirements-engineering"
   "architecture"
