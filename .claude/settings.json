@@ -37,7 +37,12 @@
       "Read(//Users/sebastianhanke/.claude/plugins/**)",
       "Read(//Users/sebastianhanke/Library/CloudStorage/OneDrive-EnBWAG/01_Methoden/Digital Innovation Playbook/**)",
       "Bash(wc -l /Users/sebastianhanke/projects/digital-innovation-agents/docs/index.md /Users/sebastianhanke/projects/digital-innovation-agents/docs/guides/*.md /Users/sebastianhanke/projects/digital-innovation-agents/docs/concepts/*.md /Users/sebastianhanke/projects/digital-innovation-agents/docs/tutorials/*.md /Users/sebastianhanke/projects/digital-innovation-agents/docs/reference/*.md)",
-      "Bash(gh run:*)"
+      "Bash(gh run:*)",
+      "Read(//Users/sebastianhanke/.claude/**)",
+      "Bash(chmod +x ~/.local/bin/dia-update-skills)"
+    ],
+    "additionalDirectories": [
+      "/Users/sebastianhanke/.local/bin"
     ]
   }
 }
