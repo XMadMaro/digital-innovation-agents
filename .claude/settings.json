@@ -5,6 +5,8 @@
       "Bash(./install-skills.sh)",
       "Bash(git commit -m ':*)",
       "Bash(git push:*)",
+      "Bash(git push origin main)",
+      "Bash(git push origin main:main)",
       "Bash(HOME=/tmp/phase0-test-default bash /Users/sebastianhanke/projects/digital-innovation-agents/claude-code-skills/install-skills.sh)",
       "Bash(gh release:*)",
       "Bash(HOME=/tmp/phase0-test-tag bash /Users/sebastianhanke/projects/digital-innovation-agents/claude-code-skills/install-skills.sh --version v1.0.0)",
