@@ -12,14 +12,52 @@ for AI-augmented innovation and development.
 
 ## For agents working in a user project that has this plugin installed
 
-- The plugin provides 8 V-Model phase skills plus a bootstrap orientation skill
-- `/v-model-workflow` is the orchestrator; `/business-analyse` is the entry
-  point when the problem space is unclear
-- The workflow is advisory, not enforcing -- respect user opt-outs immediately
+- The plugin provides 8 V-Model phase skills, a bootstrap orientation
+  skill, plus `/dia-migration` for upgrading legacy or brownfield repos
+- `/dia-guide` is the guide; `/business-analysis` is the
+  entry point when the problem space is unclear; `/dia-migration` is the
+  entry point for an inherited repo that needs to come up to v2 conventions
+- The workflow is advisory, not enforcing, respect user opt-outs immediately
 - All user-project artifacts belong under `_devprocess/` (not under this
   repo's `skills/` or `docs/`)
 
 See also: `skills/using-digital-innovation-agents/SKILL.md`.
+
+## Three-layer documentation model (drift-resistance refactor, 2026-04-30)
+
+The V-Model artifacts in user projects live in three layers, each with a
+different cadence and a different owner. Mixing layers is the dominant
+source of doc-vs-code drift, so the boundaries are binding.
+
+| Layer            | Purpose                                                                                                         | Lives in                                                                                                          |
+|------------------|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| Wayfinder        | Concept-to-file lookup, navigational, grep-friendly                                                             | `src/ARCHITECTURE.map`, JSDoc headers in entry-point files, module READMEs                                        |
+| Rule sets        | Stable truths: stack, conventions, design rules, domain glossary. Hard cap 500 lines total.                      | `_devprocess/rules/technical.md`, `design.md`, `domain.md`                                                        |
+| Backlog          | Single source of truth for state and the artifact relation graph                                                 | `_devprocess/context/BACKLOG.md`                                                                               |
+| Detail artifacts | Audit trail of the engineering process: BA, Epics, Features, Plans, Fixes, ADR detail                            | `_devprocess/analysis/`, `_devprocess/requirements/`, `_devprocess/architecture/`, `_devprocess/implementation/`  |
+
+**Status, phase, last-change, and claim of every artifact live in the
+backlog row, not in the artifact frontmatter.** Artifact frontmatter
+carries identity (id, title, created) and relations (epic, adr-refs,
+feature-refs) only.
+
+**ADR abstraction rule:** ADR core sections (Context, Decision Drivers,
+Considered Options, Decision, Consequences) contain NO code paths,
+file names, line numbers, or method signatures. Code-level hints belong
+in the optional `## Implementation Notes` appendix at the bottom, which
+is allowed to go stale. The wayfinder is the canonical source for
+current paths.
+
+**ADR/FEATURE/PLAN separation:**
+
+- **ADR** answers "what is the architectural decision and why?". No
+  tasks, no code paths in core sections.
+- **FEATURE** answers "what should the user be able to do?". No tasks,
+  no implementation details.
+- **PLAN** answers "how is it concretely implemented?". Tasks with
+  file paths and verify commands live HERE and only here.
+
+See `skills/project-conventions/SKILL.md` for the complete model.
 
 ---
 
@@ -104,7 +142,7 @@ Root Cause: [why it happens]
 Chain:      step 1 -> step 2 -> ... -> error
 ```
 
-- Bug IDs with priority: FIX-NN (P0 = immediate, P1 = short term, P2 =
+- Bug IDs with priority: FIX-NN-NN-NN (P0 = immediate, P1 = short term, P2 =
   mid term)
 - Security findings: H-N / M-N / L-N (High/Medium/Low)
 - File found bugs into the backlog immediately
