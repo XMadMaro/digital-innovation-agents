@@ -14,7 +14,7 @@ for AI-augmented innovation and development.
 
 - The plugin provides 8 V-Model phase skills, a bootstrap orientation
   skill, plus `/dia-migration` for upgrading legacy or brownfield repos
-- `/dia-orchestrator` is the orchestrator; `/business-analysis` is the
+- `/dia-guide` is the guide; `/business-analysis` is the
   entry point when the problem space is unclear; `/dia-migration` is the
   entry point for an inherited repo that needs to come up to v2 conventions
 - The workflow is advisory, not enforcing, respect user opt-outs immediately

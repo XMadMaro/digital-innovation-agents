@@ -98,7 +98,7 @@ SKILLS=(
   "security-audit"
   "consistency-check"
   "humanizer"
-  "dia-orchestrator"
+  "dia-guide"
   "dia-migration"
   "using-digital-innovation-agents"
 )
@@ -133,7 +133,7 @@ for skill in "${SKILLS[@]}"; do
 done
 echo ""
 echo "Usage in Claude Code:"
-echo "  /dia-orchestrator          -- Orchestrator for the full cycle"
+echo "  /dia-guide                 -- Workflow guide: orientation, handoff audit, closing handoff"
 echo "  /business-analysis          -- Structured problem analysis (Exploration/Ideation/Validation)"
 echo "  /requirements-engineering  -- Features, epics, success criteria"
 echo "  /architecture              -- ADRs, arc42, plan-context.md"
