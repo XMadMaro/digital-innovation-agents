@@ -59,6 +59,59 @@ current paths.
 
 See `skills/project-conventions/SKILL.md` for the complete model.
 
+## Workflow activation contract (added 2026-05-07)
+
+User projects activate the plugin via `/dia-setup`. The skill writes
+`.dia/config.toml` with one of three modes (`off`, `git-only`,
+`github-sync`) and manages an anchor block in agent-facing files
+(CLAUDE.md, AGENTS.md, GEMINI.md, .cursorrules,
+.github/copilot-instructions.md, .windsurfrules).
+
+Phase skills and `flow.py` read the mode and adapt:
+
+- `off`: skills are advisory only, hooks are silent, flow.py is
+  a no-op everywhere.
+- `git-only`: skills run, local hooks active, flow.py manages
+  phase tags only. No GitHub issue or project sync.
+- `github-sync`: full integration. flow.py runs `create-issue`,
+  `open-draft-pr`, `sync-status`, `promote-to-epic`,
+  `validate-fix` and mirrors backlog state to GitHub.
+
+This plugin repo runs `mode = "off"` (see `.dia/config.toml`). The
+plugin is not applied to itself; we develop the skills here.
+
+## BACKLOG status vocabulary (added 2026-05-07)
+
+Status values are GitHub-aligned: `Backlog`, `Ready`, `In Progress`,
+`In Review`, `Done`. Existing user projects migrate via
+`tools/migration/migrate_status_vocabulary.py`, which maps the
+legacy DIA values:
+
+```
+Planned   -> Ready
+Active    -> In Progress
+Review    -> In Review
+Waiting   -> Backlog
+Deferred  -> Backlog
+```
+
+`Done` stays `Done`.
+
+## Hotfix lane (added 2026-05-07)
+
+`/coding` allows a fast path for trivial bug fixes: max 3 files,
+no breaking change, fits an existing FEAT, under 15 minutes. The
+fix runs first; the FIX-Row, detail file, commit, and (in
+`github-sync`) GitHub issue follow right after. Mandatory closing
+step: `flow.py validate-fix --item FIX-EE-FF-NN`. Anti-misuse
+signal: directions meeting flags hotfix share over 30%.
+
+## Phase tag rename (added 2026-05-07)
+
+The security phase tag is `<id>/sec-done`, set with
+`flow.py tag-phase --phase sec`. Legacy `audit-done` is still
+accepted as an alias.
+
 ---
 
 ## Working conventions for contributors
