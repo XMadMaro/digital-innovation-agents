@@ -5,7 +5,7 @@ for AI-augmented innovation and development.
 
 ## For agents working on this repository
 
-- See `skills/using-digital-innovation-agents/SKILL.md` for an introduction
+- See `skills/dia-bootstrap/SKILL.md` for an introduction
   to the skill set and entry points
 - See `README.md` for installation and usage across all supported platforms
 - Project artifacts from user projects live under `_devprocess/`
@@ -21,7 +21,7 @@ for AI-augmented innovation and development.
 - All user-project artifacts belong under `_devprocess/` (not under this
   repo's `skills/` or `docs/`)
 
-See also: `skills/using-digital-innovation-agents/SKILL.md`.
+See also: `skills/dia-bootstrap/SKILL.md`.
 
 ## Three-layer documentation model (drift-resistance refactor, 2026-04-30)
 
@@ -58,6 +58,59 @@ current paths.
   file paths and verify commands live HERE and only here.
 
 See `skills/project-conventions/SKILL.md` for the complete model.
+
+## Workflow activation contract (added 2026-05-07)
+
+User projects activate the plugin via `/dia-setup`. The skill writes
+`.dia/config.toml` with one of three modes (`off`, `git-only`,
+`github-sync`) and manages an anchor block in agent-facing files
+(CLAUDE.md, AGENTS.md, GEMINI.md, .cursorrules,
+.github/copilot-instructions.md, .windsurfrules).
+
+Phase skills and `flow.py` read the mode and adapt:
+
+- `off`: skills are advisory only, hooks are silent, flow.py is
+  a no-op everywhere.
+- `git-only`: skills run, local hooks active, flow.py manages
+  phase tags only. No GitHub issue or project sync.
+- `github-sync`: full integration. flow.py runs `create-issue`,
+  `open-draft-pr`, `sync-status`, `promote-to-epic`,
+  `validate-fix` and mirrors backlog state to GitHub.
+
+This plugin repo runs `mode = "off"` (see `.dia/config.toml`). The
+plugin is not applied to itself; we develop the skills here.
+
+## BACKLOG status vocabulary (added 2026-05-07)
+
+Status values are GitHub-aligned: `Backlog`, `Ready`, `In Progress`,
+`In Review`, `Done`. Existing user projects migrate via
+`tools/migration/migrate_status_vocabulary.py`, which maps the
+legacy DIA values:
+
+```
+Planned   -> Ready
+Active    -> In Progress
+Review    -> In Review
+Waiting   -> Backlog
+Deferred  -> Backlog
+```
+
+`Done` stays `Done`.
+
+## Hotfix lane (added 2026-05-07)
+
+`/coding` allows a fast path for trivial bug fixes: max 3 files,
+no breaking change, fits an existing FEAT, under 15 minutes. The
+fix runs first; the FIX-Row, detail file, commit, and (in
+`github-sync`) GitHub issue follow right after. Mandatory closing
+step: `flow.py validate-fix --item FIX-EE-FF-NN`. Anti-misuse
+signal: directions meeting flags hotfix share over 30%.
+
+## Phase tag rename (added 2026-05-07)
+
+The security phase tag is `<id>/sec-done`, set with
+`flow.py tag-phase --phase sec`. Legacy `audit-done` is still
+accepted as an alias.
 
 ---
 
@@ -108,7 +161,7 @@ CLAUDE.md.
 Every feature follows this cycle:
 
 ```
-1. BACKLOG          entry in backlog (Status: Planned)
+1. BACKLOG          entry in backlog (Status: Ready)
 2. FEATURE-SPEC     write spec BEFORE implementation
 3. PLAN             plan mode: create implementation plan
 4. IMPLEMENTATION   code, build + deploy after each step
@@ -163,11 +216,12 @@ Chain:      step 1 -> step 2 -> ... -> error
 ### G. Git and release workflow
 
 - Dual remote: private (origin, all branches) + public (main only)
-- Branch flow: `feature/*` -> `dev` -> `main` -> `public/main`
-- **Safe merge:** merges into `dev` always via
-  `scripts/merge-to-dev.sh <branch>`. Automatic: `dev` -> `dev-backup`
-  snapshot, then `feature` -> `dev` (no-ff). Rollback:
-  `git checkout dev && git reset --hard dev-backup`
+- Branch flow: `feature/*` -> `develop` -> `main` -> `public/main`
+- **Safe merge:** merges into `develop` always via
+  `scripts/merge-to-dev.sh <branch>`. Automatic:
+  `develop` -> `develop-backup` snapshot, then
+  `feature` -> `develop` (no-ff). Rollback:
+  `git checkout develop && git reset --hard develop-backup`
 - Two-stage stripping:
   1. `promote-to-test` removes dev tooling (`.claude`, `scripts`,
      `forked-code`)
