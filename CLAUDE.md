@@ -161,7 +161,7 @@ CLAUDE.md.
 Every feature follows this cycle:
 
 ```
-1. BACKLOG          entry in backlog (Status: Planned)
+1. BACKLOG          entry in backlog (Status: Ready)
 2. FEATURE-SPEC     write spec BEFORE implementation
 3. PLAN             plan mode: create implementation plan
 4. IMPLEMENTATION   code, build + deploy after each step
