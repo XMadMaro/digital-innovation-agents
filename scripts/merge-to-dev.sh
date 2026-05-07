@@ -95,16 +95,37 @@ git checkout -q "$TARGET"
 git merge --no-ff -m "Merge branch '$SOURCE' into $TARGET" "$SOURCE"
 echo "[merge-to-dev] merge complete"
 
-# 5. Sync GitHub issue titles to match the renumbered ids (if any).
-# Mode-aware: flow.py apply-renumber is a no-op outside github-sync.
+# 5. Sync GitHub issue titles and parent bodies to match the
+# renumbered ids (if any). Mode-aware: flow.py apply-renumber is a
+# no-op outside github-sync. On success the plan file is deleted;
+# on failure it is preserved at a stable path so the user can
+# inspect the mapping and re-run apply-renumber once the GitHub /
+# auth / network issue is resolved.
 if [ -n "$RENUMBER_PLAN" ] && [ -s "$RENUMBER_PLAN" ]; then
     FLOW="tools/github-integration/flow.py"
     if [ -f "$FLOW" ]; then
         echo "[merge-to-dev] syncing GitHub issue titles from $RENUMBER_PLAN"
-        python3 "$FLOW" apply-renumber --plan "$RENUMBER_PLAN" || \
-            echo "[merge-to-dev] WARNING: apply-renumber returned non-zero; review issue titles manually"
+        if python3 "$FLOW" apply-renumber --plan "$RENUMBER_PLAN"; then
+            rm -f "$RENUMBER_PLAN"
+        else
+            REPO_ROOT_PATH=$(git rev-parse --show-toplevel)
+            STABLE_PLAN="$REPO_ROOT_PATH/.dia/last-renumber-plan.json"
+            mkdir -p "$REPO_ROOT_PATH/.dia"
+            mv "$RENUMBER_PLAN" "$STABLE_PLAN"
+            echo "[merge-to-dev] WARNING: apply-renumber returned non-zero." >&2
+            echo "[merge-to-dev] The renumber plan was kept at:" >&2
+            echo "    $STABLE_PLAN" >&2
+            echo "[merge-to-dev] After fixing the underlying issue (gh auth, network, permissions), retry with:" >&2
+            echo "    python3 $FLOW apply-renumber --plan $STABLE_PLAN" >&2
+        fi
+    else
+        # flow.py not available: keep the plan for manual handling.
+        REPO_ROOT_PATH=$(git rev-parse --show-toplevel)
+        STABLE_PLAN="$REPO_ROOT_PATH/.dia/last-renumber-plan.json"
+        mkdir -p "$REPO_ROOT_PATH/.dia"
+        mv "$RENUMBER_PLAN" "$STABLE_PLAN"
+        echo "[merge-to-dev] flow.py not found; renumber plan kept at $STABLE_PLAN" >&2
     fi
-    rm -f "$RENUMBER_PLAN"
 fi
 
 echo "[merge-to-dev] rollback: git checkout $TARGET && git reset --hard $BACKUP"
