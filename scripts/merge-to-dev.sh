@@ -71,10 +71,13 @@ echo "[merge-to-dev] snapshot $BACKUP"
 # 2. Switch to source
 git checkout -q "$SOURCE"
 
-# 3. Renumber if needed
+# 3. Renumber if needed. Write the mapping to a tmp file so the
+# GitHub-side issue titles can be synced after the merge.
+RENUMBER_PLAN=""
 if ! python3 "$RENUMBER" --target "$TARGET" --check-only; then
     echo "[merge-to-dev] id collisions detected, renumbering source branch"
-    python3 "$RENUMBER" --target "$TARGET" --source "$SOURCE"
+    RENUMBER_PLAN=$(mktemp -t dia-renumber-plan.XXXXXX.json)
+    python3 "$RENUMBER" --target "$TARGET" --source "$SOURCE" --plan-out "$RENUMBER_PLAN"
     if [ -n "$(git status --porcelain)" ]; then
         git add -A
         git commit -qm "chore(renumber): align ids with $TARGET before merge
@@ -91,4 +94,17 @@ fi
 git checkout -q "$TARGET"
 git merge --no-ff -m "Merge branch '$SOURCE' into $TARGET" "$SOURCE"
 echo "[merge-to-dev] merge complete"
+
+# 5. Sync GitHub issue titles to match the renumbered ids (if any).
+# Mode-aware: flow.py apply-renumber is a no-op outside github-sync.
+if [ -n "$RENUMBER_PLAN" ] && [ -s "$RENUMBER_PLAN" ]; then
+    FLOW="tools/github-integration/flow.py"
+    if [ -f "$FLOW" ]; then
+        echo "[merge-to-dev] syncing GitHub issue titles from $RENUMBER_PLAN"
+        python3 "$FLOW" apply-renumber --plan "$RENUMBER_PLAN" || \
+            echo "[merge-to-dev] WARNING: apply-renumber returned non-zero; review issue titles manually"
+    fi
+    rm -f "$RENUMBER_PLAN"
+fi
+
 echo "[merge-to-dev] rollback: git checkout $TARGET && git reset --hard $BACKUP"
