@@ -5,7 +5,7 @@ for AI-augmented innovation and development.
 
 ## For agents working on this repository
 
-- See `skills/using-digital-innovation-agents/SKILL.md` for an introduction
+- See `skills/dia-bootstrap/SKILL.md` for an introduction
   to the skill set and entry points
 - See `README.md` for installation and usage across all supported platforms
 - Project artifacts from user projects live under `_devprocess/`
@@ -21,7 +21,7 @@ for AI-augmented innovation and development.
 - All user-project artifacts belong under `_devprocess/` (not under this
   repo's `skills/` or `docs/`)
 
-See also: `skills/using-digital-innovation-agents/SKILL.md`.
+See also: `skills/dia-bootstrap/SKILL.md`.
 
 ## Three-layer documentation model (drift-resistance refactor, 2026-04-30)
 
