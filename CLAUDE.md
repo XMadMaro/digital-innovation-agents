@@ -216,11 +216,12 @@ Chain:      step 1 -> step 2 -> ... -> error
 ### G. Git and release workflow
 
 - Dual remote: private (origin, all branches) + public (main only)
-- Branch flow: `feature/*` -> `dev` -> `main` -> `public/main`
-- **Safe merge:** merges into `dev` always via
-  `scripts/merge-to-dev.sh <branch>`. Automatic: `dev` -> `dev-backup`
-  snapshot, then `feature` -> `dev` (no-ff). Rollback:
-  `git checkout dev && git reset --hard dev-backup`
+- Branch flow: `feature/*` -> `develop` -> `main` -> `public/main`
+- **Safe merge:** merges into `develop` always via
+  `scripts/merge-to-dev.sh <branch>`. Automatic:
+  `develop` -> `develop-backup` snapshot, then
+  `feature` -> `develop` (no-ff). Rollback:
+  `git checkout develop && git reset --hard develop-backup`
 - Two-stage stripping:
   1. `promote-to-test` removes dev tooling (`.claude`, `scripts`,
      `forked-code`)

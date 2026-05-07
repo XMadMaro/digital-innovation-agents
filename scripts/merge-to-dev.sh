@@ -5,7 +5,7 @@
 # Usage:
 #   scripts/merge-to-dev.sh <source-branch> [target-branch]
 #
-# Default target: dev.
+# Default target: develop.
 #
 # Steps:
 #   1. Snapshot: <target> -> <target>-backup (lightweight, fast revert)
@@ -30,7 +30,7 @@ if [ $# -lt 1 ] || [ $# -gt 2 ]; then
 fi
 
 SOURCE=$1
-TARGET=${2:-dev}
+TARGET=${2:-develop}
 
 REPO_ROOT=$(git rev-parse --show-toplevel)
 cd "$REPO_ROOT"
