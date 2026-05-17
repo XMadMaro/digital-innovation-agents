@@ -303,7 +303,7 @@ def check_adr_abstraction(adr_files: Iterable[Path]) -> list[Finding]:
 
 
 BACKLOG_ROW_RE = re.compile(r"^\|\s*([A-Z]+(?:-\d+){1,3})\s*\|", re.MULTILINE)
-BACKLOG_EPIC_HEADER_RE = re.compile(r"^###\s+(EPIC-\d{2})", re.MULTILINE)
+BACKLOG_EPIC_HEADER_RE = re.compile(r"^###\s+(EPIC-\d{2,3})", re.MULTILINE)
 
 
 def parse_backlog_ids() -> set[str]:
@@ -321,9 +321,9 @@ ID_PATTERNS = [
     ("FIX", re.compile(r"^(FIX-\d{2}-\d{2}-\d{2})(?:-|$)")),
     ("IMP", re.compile(r"^(IMP-\d{2}-\d{2}-\d{2})(?:-|$)")),
     ("FEAT", re.compile(r"^(FEAT-\d{2}-\d{2})(?:-|$)")),
-    ("EPIC", re.compile(r"^(EPIC-\d{2})(?:-|$)")),
-    ("ADR", re.compile(r"^(ADR-\d{2})(?:-|$)")),
-    ("PLAN", re.compile(r"^(PLAN-\d{2})(?:-|$)")),
+    ("EPIC", re.compile(r"^(EPIC-\d{2,3})(?:-|$)")),
+    ("ADR", re.compile(r"^(ADR-\d{2,3})(?:-|$)")),
+    ("PLAN", re.compile(r"^(PLAN-\d{2,3})(?:-|$)")),
 ]
 
 
@@ -868,7 +868,7 @@ def check_detail_file_status_drift() -> list[Finding]:
 
 
 BACKLOG_ID_ROW_RE = re.compile(
-    r"^\|\s*((?:FEAT|FIX|IMP|ADR|PLAN)-\d{2}(?:-\d{2}){0,2})\s*\|"
+    r"^\|\s*((?:FEAT|FIX|IMP)-\d{2}(?:-\d{2}){1,2}|(?:ADR|PLAN)-\d{2,3})\s*\|"
 )
 
 
