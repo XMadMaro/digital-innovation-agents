@@ -1,5 +1,10 @@
 # Security Audit Report
 
+## Reasoned exception
+
+Pre-shrink legacy audit (May 2026), written before the v3.6.0 audit cap (65 lines)
+existed. Retained verbatim as historical record. New AUDIT-* files follow the cap.
+
 | Field | Value |
 |-------|-------|
 | **Project** | digital-innovation-agents |
