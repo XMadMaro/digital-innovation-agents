@@ -1,0 +1,98 @@
+name: Security reference auto-refresh
+
+# D3 Ebene 2: periodically regenerate the security-audit checklists from
+# official sources, verify adversarially, and only commit + version-bump
+# when the fail-closed gate passes. See scripts/security-refresh/README.md.
+
+on:
+  schedule:
+    # Weekly, Monday 04:17 UTC (odd minute to dodge cron congestion).
+    - cron: "17 4 * * 1"
+  workflow_dispatch: {}  # allow manual runs from the Actions tab
+
+concurrency:
+  group: security-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install anthropic SDK
+        run: pip install --quiet anthropic
+
+      - name: Refresh references (model, official-domain-restricted)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -euo pipefail
+          python3 scripts/security-refresh/refresh_references.py refresh \
+            --out /tmp/candidate
+
+      - name: Adversarial verify (model re-fetches official sources)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -euo pipefail
+          # Exit 1 here fails the step and the job -> no commit (fail-closed).
+          python3 scripts/security-refresh/refresh_references.py verify \
+            --candidate-dir /tmp/candidate \
+            --out /tmp/verdict.json
+
+      - name: Deterministic fail-closed gate (fixtures + sanity)
+        run: |
+          set -euo pipefail
+          # Regression net: known-good must survive, known-bad must not appear,
+          # no truncation. Combined with the adversarial verdict above.
+          python3 scripts/security-refresh/verify_refresh.py \
+            --candidate-dir /tmp/candidate \
+            --fixtures scripts/security-refresh/currency_fixtures.json \
+            --verdict /tmp/verdict.json
+
+      - name: Apply candidate + bump version
+        id: apply
+        run: |
+          set -euo pipefail
+          # Only reached if BOTH the adversarial verify and the gate passed.
+          cp /tmp/candidate/*.md skills/security-audit/references/
+          NEW_VERSION="$(python3 scripts/security-refresh/bump_version.py)"
+          echo "new_version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
+          # Nothing changed? Then there is no diff to commit; skip.
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.apply.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add skills/security-audit/references/ .claude-plugin/plugin.json .claude-plugin/marketplace.json
+          git commit -m "chore(security-audit): auto-refresh references to v${{ steps.apply.outputs.new_version }}
+
+          Regenerated OWASP/CWE/LLM checklists from official sources
+          (owasp.org, genai.owasp.org, cwe.mitre.org, nvd.nist.gov,
+          github.com/advisories, osv.dev). Passed adversarial re-fetch
+          verification + the fixture regression gate. Version bumped so
+          the marketplace/plugin update actually propagates.
+
+          Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
+          git push origin develop
