@@ -1,30 +1,45 @@
-<!-- See skills/architecture/SKILL.md for how to fill -->
+<!--
+Instructions for the agent: produce this file as
+`_devprocess/rules/design.md` ONLY when the project has UI surface that
+needs design discipline. Skip the file for headless projects.
+
+Write the prose in the user's working language. Keep keywords (Color,
+Layout, Spacing, etc.) in English.
+
+Hard cap: 100 lines. Component-specific details go into the component's
+file or its module README, not here.
+-->
 
 # Design rules for {project-name}
 
-> Cap 30 lines. Created only when the project has UI surface.
+> Max 100 lines. Loaded only when UI changes are in scope.
 
 ## Design system
 
 - Primary color: {e.g. #000099}
 - Accent color: {e.g. #FE8F11}
-- Color distribution: {e.g. 60-30-10}
+- Color distribution: {e.g. 60-30-10 rule}
 - Typeface: {e.g. system font stack}
 
 ## Layout
 
-- Breakpoint: {e.g. 768px}
-- Max content width: {e.g. 1200px}
-- Spacing scale: {e.g. 4px base unit}
+- {e.g. Responsive breakpoint at 768px}
+- {e.g. Max content width: 1200px}
+- {e.g. Spacing scale: 4px base unit}
 
 ## Component patterns
 
-- {e.g. Inputs always carry label plus error state}
-- {e.g. Loading uses skeletons, not spinners}
-- {e.g. At most one modal visible at a time}
+- {one rule, e.g. "Inputs always carry label plus error state."}
+- {one rule, e.g. "Loading: skeleton placeholders, not spinners."}
+- {one rule, e.g. "Modals: at most one visible at a time."}
 
 ## Accessibility
 
 - {e.g. WCAG 2.1 AA minimum}
 - {e.g. Every interactive element reachable by keyboard}
 - {e.g. Color contrast >= 4.5:1}
+
+## Animations
+
+- {e.g. Duration 150-300ms, ease-out}
+- {e.g. Honor reduced-motion preference}

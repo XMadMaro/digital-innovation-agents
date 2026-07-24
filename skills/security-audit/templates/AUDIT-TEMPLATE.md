@@ -1,13 +1,14 @@
-<!-- See skills/security-audit/SKILL.md for how to fill -->
-
 # Security Audit Report
 
 | Field | Value |
 |-------|-------|
-| Project | {Projektname} |
-| Date | {YYYY-MM-DD} |
-| Scan Scope | {Full / Partial, welche Phasen} |
-| Risk Rating | {Critical / High / Medium / Low} |
+| **Project** | {Projektname} |
+| **Date** | {YYYY-MM-DD} |
+| **Auditor** | Security Audit Skill |
+| **Scan Scope** | {Full / Partial, welche Phasen} |
+| **Risk Rating** | {Critical / High / Medium / Low} |
+| **Languages** | {TypeScript / Python / etc.} |
+| **Previous Audit** | {Datum oder "First Audit"} |
 
 ---
 
@@ -15,65 +16,80 @@
 
 | Analysis Domain | Critical | High | Medium | Low | Info |
 |-----------------|----------|------|--------|-----|------|
-| Code findings (SAST, OWASP, Zero Trust, Quality) | {n} | {n} | {n} | {n} | {n} |
+| SAST (CodeQL-equiv.) | {n} | {n} | {n} | {n} | {n} |
+| OWASP Top 10 | {n} | {n} | {n} | {n} | {n} |
+| OWASP LLM Top 10 | {n} | {n} | {n} | {n} | {n} |
+| Zero Trust | {n} | {n} | {n} | {n} | {n} |
+| Code Quality | {n} | {n} | {n} | {n} | {n} |
 | SCA (Dependencies) | {n} | {n} | {n} | {n} | {n} |
 | License Compliance | {n} | {n} | {n} | {n} | {n} |
-| Total | {n} | {n} | {n} | {n} | {n} |
+| **Total** | **{n}** | **{n}** | **{n}** | **{n}** | **{n}** |
 
-{2-3 Sätze Gesamtbewertung.}
+{2-3 Saetze Gesamtbewertung}
+
+### Delta from Previous Audit (wenn vorhanden)
+
+| Finding | Previous | Current | Change |
+|---------|----------|---------|--------|
+| {Finding-ID} | {Status} | {Status} | {Resolved/New/Unchanged} |
 
 ---
 
-## Findings (nach Priorität)
-
-Inline format pro Finding: `**{FP}** - Severity / CWE-{n} / CVSS {vector}={score} / `file.ts:LineNN` - Risk: {1 Satz} - Evidence: {snippet/PoC} - Remediation: {1 Satz} - Effort: S/M/L`. CVSS mandatory for High+; Evidence mandatory (snippet, source->sink trace, or PoC result). Status one of Confirmed / Unverified / False Positive / Resolved.
+## Findings (nach Prioritaet)
 
 ### P1: Must Fix (Critical + High)
 
-- {Finding-Zeile}
+{Detaillierte Findings. Format siehe references/cwe-patterns.md}
 
 ### P2: Should Fix (Medium)
 
-- {Finding-Zeile}
+{Detaillierte Findings}
 
 ### P3: Consider (Low + Info)
 
-- {Finding-Zeile}
+{Findings mit geringem Risiko}
 
 ---
 
-## SCA: Vulnerable Dependencies
+## Remediation Plan
+
+| Priority | Finding | Remediation | Effort |
+|----------|---------|-------------|--------|
+| P1 | {Finding} | {Fix} | {S/M/L} |
+| P2 | {Finding} | {Fix} | {S/M/L} |
+| P3 | {Finding} | {Fix} | {S/M/L} |
+
+---
+
+## Positive Findings
+
+{Was bereits gut umgesetzt ist. Defense in Depth, vorhandene Massnahmen, etc.}
+
+---
+
+## SCA Details
+
+### Vulnerable Dependencies
 
 | Package | Version | CVE | Severity | Fix Version |
 |---------|---------|-----|----------|-------------|
 | {pkg} | {ver} | {CVE-ID} | {sev} | {fix} |
 
-## License Compliance
+### License Compliance
 
 | Package | License | Risk |
 |---------|---------|------|
-| {pkg} | {license} | {OK / Review / Blocked} |
+| {pkg} | {license} | {OK/Review/Blocked} |
 
 ---
 
-## Scope and Tools
+## Appendix
 
-- Tools: {z.B. semgrep, npm audit, custom CWE patterns}
-- Files analyzed: {Pfade oder Anzahl, kurz}
-- Excluded: {Was bewusst nicht geprüft wurde, plus Grund}
+### A. Tools Used
+{Welche Tools/Patterns wurden fuer die Analyse verwendet}
 
----
+### B. Files Analyzed
+{Scope der analysierten Dateien}
 
-## Coverage and limitations
-
-Mandatory. `report_assembler.py fill` generates this from the scan; only
-list what actually held. Names the method blindspots so a silent report
-is never read as full coverage.
-
-- SAST depth: {semgrep AST + grep, or grep-only = higher false-negative risk}
-- Secrets: {dedicated scanner, or redacting fallback + history not scanned}
-- SCA: {tools that ran; offline = CVE stale/absent; vendored/WASM unscanned}
-- No DAST/runtime except opt-in isolated PoC probes
-- Scope: {full / diff-scope + file count}
-- Threat taxonomy snapshot: {OWASP / LLM / CWE editions used}
-- Not evaluated: {CWE Top 25 entries or areas skipped}
+### C. Excluded from Analysis
+{Was wurde nicht geprueft und warum}
